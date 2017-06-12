@@ -1,30 +1,134 @@
 /*Top Banner Background Color */
-
-.prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1 {background-color: #18335D; }
+.prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1 {
+  background-color: #18335D;
+  }
 
 /*!!!!!!!  TOPBAR - USER AREA - HOVER COLOR !!!!!!!!*/
   md-fab-toolbar md-toolbar {
-      background-color: #18335D !important;
-      pointer-events: none;
-      z-index: 23;
+  background-color: #18335D !important;
+  pointer-events: none;
+  z-index: 23;
   }
 /*Search Bar Wrapper color */
-   prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
-	background-color: #00468B; 
- }
+  prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
+  background-color: #00468B; 
+  }
 
-/*Make logo larger, be default it is not displayed as sized*/
+/*Make logo larger, by default it is not displayed as sized*/
 /*prm-logo .product-logo {
-    padding: .25em;
-}*/
+  padding: .25em;
+  }*/
 /* Call the clickable logo */
-prm-logo div.product-logo {
-    display:none;
-}
 prm-logo div.product-logo-local {
-display: flex;
-}
+  display: flex;
+  }
 prm-logo .product-logo a:hover {background-color:transparent; text-transform:none; box-shadow: none;}
 prm-logo .logo-image, prm-logo img {
-    max-height: 60px;
-}
+  max-height: 60px;
+  }
+
+/* Edits by Jonathan - May 31, 2017 */
+
+/* user name to UCSB light blue */
+prm-user-area .user-menu-button .user-name {
+  color: #59B6E6;
+  }
+
+/* Advance search radio bottons to UCSB blue */
+.new-result-item .list-item-count, .prm-secondary-bg.prm-hue1, md-input-container:after, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-radio-button.md-checked ._md-on, md-radio-button.md-checked .md-on, md-tabs md-ink-bar{
+  background-color: #00468B;
+  }
+
+.md-input-container-dummy>.md-select-dummy:focus .md-select-value, .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, .prm-secondary-border.prm-hue1, md-radio-button.md-checked ._md-off, md-radio-button.md-checked .md-off, md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value {
+  border-color: #00468B;
+  }
+
+/* Advance search arrow icon to  UCSB Dark Blue */
+prm-browse-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-journals-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-tags-search-bar .advanced-search-wrapper .search-string .string-block prm-icon 
+.md-button.button-confirm {
+color: #18335D;
+  }
+
+/* Journal and Browse search bar to UCSB Blue */
+.prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
+  background-color: #00468B;
+  }
+
+/* Journal and Browse search box to UCSB yellow*/
+.bar.alert-bar, .classic-input .search-scope, .prm-alert-border {
+  background-color: #FFCE34;
+  border-color: #FFCE34;
+  }
+
+/* List Item Count number to dark grey */
+.list-item-count {
+  color: #4D4E4E;
+  }
+
+/* Media type color to dark grey */
+prm-brief-result-container .media-content-type, md-menu-content .menu-title {
+  color: #4D4E4E;
+  }
+
+/* Alert bar to UCSB yellow*/
+div.bar.alert-bar.layout-align-center-center.layout-row{
+  background-color: #FFCE34;
+  border-color: #FFCE34;
+  }
+
+/* Item Actions to UCSB blue */
+.prm-primary-color, .result-item-actions .custom-button, .result-item-actions .more-options-button, .md-autocomplete-suggestions .suggestion-scope, md-tab-content .tab-content-header md-input-container md-select-value .md-text {
+  color: #00468B;
+  }
+
+/* Background Color to UCSB beige */
+.prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, .__xs prm-facet, .__sm prm-facet, .__sm .sidebar, .__xs .sidebar, prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button, prm-full-view-cont .recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider, md-card .card-content-block {
+  background-color: #EDE9E1;border-color: #EDE9E1; 
+  }
+
+/* "show more", "refine" in left sidebar to UCSB blue */
+.link-alt-color, .section-title prm-icon{
+  color: #00468B;
+  }
+.md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link{
+  color: #00468B;
+  }
+
+/* Result Title Color to UCSB blue */
+prm-brief-result .item-title span {
+  color: #00468B;
+  }
+
+/* result highlight color to UCSB yellow */
+.text-highlight,mark{box-shadow:inset 0 -.3em 0 0 #FFCE34}
+
+/* "full text", "Available at" to UCSB dark Blue */
+.fulltext, .fulltext_linktorsrc, .not_restricted, .prm-positive, .status-available, [class*=available], [class*=FT] {
+  color: #18335D;
+  }
+
+/* Location availablity to UCSB colors */
+[class*=available]>span {
+  color: #18335D;
+  }
+[class*=available]>span:first-of-type {
+  color: #00468B;
+  }
+
+/* "Load more results" to UCSB Dark Blue */
+.md-button.button-confirm {
+  color: #18335D;
+  }
+.md-button.button-confirm:hover:not([disabled]) {
+  color: #080606;
+  background-color: rgba(58,58,58,.1);
+  }
+
+/* "Sign IN" door icon and hover to grey */
+.bar prm-authentication .md-button, .md-button.button-as-link {
+  color: #3a3a3a;
+  } 
+.bar prm-authentication .md-button._md-focused:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link:hover:not([disabled]) {
+  color: #080606;
+  background-color: rgba(58,58,58,.1);
+  }
