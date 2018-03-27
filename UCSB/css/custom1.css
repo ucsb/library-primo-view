@@ -83,6 +83,7 @@ prm-brief-result-container .media-content-type, md-menu-content .menu-title {
 div.bar.alert-bar.layout-align-center-center.layout-row{
   background-color: #FFCE34;
   border-color: #FFCE34;
+  display: none;
 }
 
 
