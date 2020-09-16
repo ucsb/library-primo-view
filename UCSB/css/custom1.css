@@ -148,3 +148,15 @@ color: #3a3a3a;
  color: #080606;
  background-color: rgba(58,58,58,.1);
 }
+span.umnHathiTrustLink {
+  margin-left: -5px;
+}
+
+span.umnHathiTrustLink md-icon svg {
+  height: 1.2em;
+  filter: grayscale(100%);
+}
+
+span.umnHathiTrustLink:hover md-icon svg {
+  filter: grayscale(0%);
+}
