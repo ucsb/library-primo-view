@@ -1,3 +1,8 @@
+# File structure
+CSS files have been organized into separate files containing elements that apply style changes to particular components or modules; e.g. the alert bar has a separate css file in the root css directory, and the Hathitrust module's css file is stored in its own separate css directory.
+
+All individual CSS files are combined into the custom1.css file upon compilation of the View package in the Primo Developer Environment.
+
 # The Primo New UI Customization Workflow Development Environment
 
 
@@ -118,12 +123,3 @@ prm-search > md-content.md-primoExplore-theme .main {
 }
 ```
 -  Save and refresh your browser
-
-
-
-
-
-
-
-
-

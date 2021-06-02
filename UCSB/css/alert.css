@@ -1,0 +1,17 @@
+/***
+
+  Alert Bar
+  
+***/
+prm-topbar {
+  height: inherit;
+}
+
+prm-topbar .top-nav-bar {
+  height: 64px;
+}
+
+/* Uncomment to hide */
+prm-top-bar-before {
+  /* display: none; */
+}
