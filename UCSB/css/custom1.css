@@ -11,10 +11,12 @@ prm-topbar .top-nav-bar {
   height: 64px;
 }
 
-/* Uncomment to hide */
+/* Uncomment when no longer need alert bar */
+/*
 prm-top-bar-before {
-  /* display: none; */
+  display: none; 
 }
+*/
 /***
 
   UCSB Theme
