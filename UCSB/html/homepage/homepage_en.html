@@ -1,0 +1,89 @@
+<md-content layout-xs="column" layout="row">
+	<div flex ="65" layout="column">
+		<md-card class="default-card">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Search Tips</span>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content>
+				<h4>Scope</h4>
+				<p>Choose where you want to find the resources you want.</p>
+				<table class="search-tip-table">
+					<tr class="search-tip-table-row">
+						<th class="search-tip-table-header">Scope</th>
+						<th class="search-tip-table-header">Includes</th>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-scope"><i>Articles, Books, and more</i></td>
+						<td class="search-tip-table-description">Everything provided by all UC Campuses <i>plus</i> other libraries</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-scope"><i>UCSB Library Catalog</i></td>
+						<td class="search-tip-table-description">Resources only from UC Santa Barbara</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-scope"><i>UCSB Course Reserves</i></td>
+						<td class="search-tip-table-description">Resources reserved for courses offered at UC Santa Barbara</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-scope"><i>UC Campuses</i></td>
+						<td class="search-tip-table-description">Resources from all University of California libraries</td>
+					</tr>
+				</table>
+				<br>
+				<h4>Operators</h4>
+				<p>Enhance your search queries by combining the following operations with your terms:</p>
+        <table class="search-tip-table">
+					<tr class="search-tip-table-row">
+						<th class="search-tip-table-header">Operator</th>
+						<th class="search-tip-table-header">Description</th>
+						<th class="search-tip-table-header">Example</th>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-operator"><i>AND</i></td>
+						<td class="search-tip-table-description">Looks for records with fields that match terms on both sides of operator</td>
+						<td class="search-tip-table-example">"author AND title", "title AND series"</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-operator"><i>OR</i></td>
+						<td class="search-tip-table-description">Matches for one term or another</td>
+						<td class="search-tip-table-example">author OR author</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-operator-long"><i>(parenthesis)</i></td>
+						<td class="search-tip-table-description">Establishes order of operations, otherwise precedence is set from left to right</td>
+						<td class="search-tip-table-example">(title AND author) OR series</td>
+					</tr>
+					<tr class="search-tip-table-row">
+						<td class="search-tip-table-operator"><i>NOT</i></td>
+						<td class="search-tip-table-description">Excludes results that match against a term</td>
+						<td class="search-tip-table-example">author AND title NOT review</td>
+					</tr>
+        </table>
+				<br>
+				<h4>Filters</h4>
+				<p>Use facets to narrow your list of results and speed-up finding specific materials.</p>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div flex-xs flex="40" layout="column">
+		<md-card class="default-card">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Need help?</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <p class="search-help-link"><a href="http://www.library.ucsb.edu/ask-librarian" target="_blank">Ask a Librarian</a></p>
+			  <ul style="padding-left: 10%;">
+					<li>Chat online 24/7</li>
+          <li>Email</li>
+        	<li>Phone</li>
+          <li>Schedule an appointment</li>
+			  </ul>
+        <p class="search-help-link"><a href="http://guides.library.ucsb.edu/ucsb-library-search" target="_blank">UCSB's Library Search Guide</a></p>
+      </md-card-content>
+    </md-card>
+	</div>
+</md-content>
