@@ -1,0 +1,49 @@
+/**
+ *
+ * Style for added links in Brief Result container (e.g. Finding Aids)
+ *
+**/
+#briefResultAfterFindingAid {
+    margin:0px;
+    padding:0px;
+    padding-bottom:10px;
+    vertical-align: middle;
+}
+
+prm-brief-result-container.list-item:hover {
+    background:#ffffff;
+}
+
+#briefResultAfterFindingAid a {
+    color:#3d6e94;
+}
+
+#briefResultAfterFindingAid > .layout-row > .flex-* {
+    padding:0px;
+    margin-top:0px;
+}
+
+#briefResultAfterFindingAid > .md-button {
+    margin:0px !important;
+}
+
+#briefResultAfterFindingAid > .spaceLeft {
+    padding-left:5px;
+}
+
+#briefResultAfterFindingAid > .marginLeftFindingAid {
+    padding-left:122px;
+}
+
+#briefResultAfterFindingAid > .marginLeftFindingAid2 {
+    padding-left:140px;
+}
+
+#briefResultAfterFindingAid > .spaceLeft40 {
+    padding-left:45px;
+}
+
+#briefResultAfterFindingAid > .folder {
+    font-size: 36px;
+    color: #7b8995;
+}
