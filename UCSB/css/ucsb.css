@@ -158,9 +158,9 @@ div.item-details-element {
 
 /* Spacing for special br class injected via normalization rules */
 br.note {
-display: block; /* gives width to element */
-content: " "; /* clears default height */
-margin-top: 7px; /* configurable height */
+  display: block; /* gives width to element */
+  content: " "; /* clears default height */
+  margin-top: 7px; /* configurable height */
 }
 
 table.search-tip-table {
