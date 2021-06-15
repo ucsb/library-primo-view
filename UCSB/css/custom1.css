@@ -191,3 +191,15 @@ span.umnHathiTrustLink md-icon svg {
 span.umnHathiTrustLink:hover md-icon svg {
   filter: grayscale(0%);
 }
+/**
+ *
+ * Hide log-in options
+ *
+**/
+#button.signInBtn {
+  display: none;
+}
+
+prm-user-area-expandable {
+  display: none;
+}

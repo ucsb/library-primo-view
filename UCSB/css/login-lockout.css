@@ -1,0 +1,12 @@
+/**
+ *
+ * Hide log-in options
+ *
+**/
+#button.signInBtn {
+  display: none;
+}
+
+prm-user-area-expandable {
+  display: none;
+}
