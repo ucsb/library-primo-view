@@ -14,7 +14,7 @@ md-fab-toolbar md-toolbar {
   pointer-events: none;
   z-index: 23;
 }
-  
+
 /*Search Bar Wrapper color */
 prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
   background-color: #00468B; 
@@ -30,7 +30,6 @@ prm-logo .product-logo a:hover {
   text-transform:none;
   box-shadow: none;
 }
-
 prm-logo .logo-image, prm-logo img {
   max-height: 60px;
 }
@@ -47,7 +46,7 @@ prm-logo .logo-image, prm-logo img {
 prm-user-area .user-menu-button .user-name {
   color: #59B6E6;
 }
-  
+
 /* Advance search radio bottons to UCSB blue */
 .new-result-item .list-item-count, .prm-secondary-bg.prm-hue1, md-input-container:after, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-radio-button.md-checked ._md-on, md-radio-button.md-checked .md-on, md-tabs md-ink-bar  {
   background-color: #00468B;
@@ -132,7 +131,7 @@ prm-brief-result .item-title span {
 [class*=available]>span:first-of-type {
   color: #00468B;
 }
-  
+
 /* "Load more results" to UCSB Dark Blue */
 .md-button.button-confirm {
   color: #18335D;
@@ -153,79 +152,79 @@ prm-brief-result .item-title span {
 
 /* Spacing for View Full Records' Details Service */
 div.item-details-element {
-  padding-bottom: .05em;
+padding-bottom: .05em;
 }
 
 /* Spacing for special br class injected via normalization rules */
 br.note {
-  display: block; /* gives width to element */
+  display: block; /* width */
   content: " "; /* clears default height */
-  margin-top: 7px; /* configurable height */
+  margin-top: 7px; /* height */
 }
 
 table.search-tip-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+width: 100%;
+border-collapse: collapse;
+font-size: 13px;
 }
 
 th.search-tip-table-header, td.search-tip-table-description {
-  text-align: left;
-  padding-right: 2.5%;
-  padding-bottom: 2.5%;
-  padding-left: 2.5%;
-  border: 1px solid black;
+text-align: left;
+padding-right: 2.5%;
+padding-bottom: 2.5%;
+padding-left: 2.5%;
+border: 1px solid black;
 }
 
 td.search-tip-table-example {
-  padding-left: 5%;
-  border: 1px solid black;
+padding-left: 5%;
+border: 1px solid black;
 }
 
 td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
-  padding-right: 2.5%;
-  padding-left: 2.5%;
-  border: 1px solid black;
-  text-align: left;
+padding-right: 2.5%;
+padding-left: 2.5%;
+border: 1px solid black;
+text-align: left;
 }
 
 td.search-tip-table-operator-long {
-  word-break: break-word;
+word-break: break-word;
 }
 
 /* Search tip table on homepage */
 @media (min-width: 900px) {
-  table.search-tip-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: inherit;
-  }
+table.search-tip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: inherit;
+}
 
-  th.search-tip-table-header, td.search-tip-table-description {
-    padding-right: 5%;
-    border: none;
-    padding-left: 7.5%;
-  }
-  
-  td.search-tip-table-example {
-    padding-left: 5%;
-    border: none;
-  }
-  
-  td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
-    border: none;
-    word-break: normal;
-  }
+th.search-tip-table-header, td.search-tip-table-description {
+  padding-right: 5%;
+  border: none;
+  padding-left: 7.5%;
+}
+
+td.search-tip-table-example {
+  padding-left: 5%;
+  border: none;
+}
+
+td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+  border: none;
+  word-break: normal;
+}
 }
 
 th.search-tip-table-header {
-	display: none;
+display: none;
 }
 
 md-card.default-card {
-  padding: 2.5%;
+padding: 2.5%;
 }
 
 p.search-help-link {
-	padding-left: 2.5%;
+padding-left: 2.5%;
 }
