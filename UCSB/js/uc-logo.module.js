@@ -1,17 +1,20 @@
-/* UC Library Search Logo */
+/**
+ * 
+ * UC Library Search Logo
+ * 
+**/
 app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
 	var vm = this;
 
 	this.navigateToHomePage = function () {
 	  var params = $location.search();
-	  console.log(params);
 	  var vid = params.vid;
 	  var lang = params.lang || "en_US";
 	  var split = $location.absUrl().split('/discovery/');
 
 	  if (split.length === 1) {
-		console.log(split[0] + ' : Could not detect the view name!');
-		return false;
+      console.log(split[0] + ' : Could not detect the view name!');
+      return false;
 	  }
 
 	  var baseUrl = split[0];
