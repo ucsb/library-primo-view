@@ -1,0 +1,45 @@
+/**
+ *
+ * LibChat Widget CSS
+ *
+**/
+.s-lch-widget-float {
+  bottom: 200px !important;
+  height: 65%;
+  margin-Top: 15%;
+}
+.s-lch-widget-float.open {
+  height: 60% !important;
+  margin-top: 8% !important;
+}
+@media (max-width: 1200px) {
+  .s-lch-widget-float {
+    bottom: 190px !important;
+    height: 65%;
+    margin-Top: 15%;
+  }
+  .s-lch-widget-float.open {
+    height: 60% !important;
+    margin-top: 8% !important;
+  }
+}
+@media (max-width: 930px) {
+  .s-lch-widget-float {
+    bottom: 250px !important;
+  }
+  .s-lch-widget-float.open {
+    height: 56% !important;
+    margin-top: 12% !important;
+  }
+}
+@media (max-width: 600px) {
+  .s-lch-widget-float {
+    bottom: 20px !important;
+    height: 80%;
+    margin-Top: 20%;
+  }
+  .s-lch-widget-float.open {
+    height: 80% !important;
+    margin-top: 20% !important;
+  }
+}
