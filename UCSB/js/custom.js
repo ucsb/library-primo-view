@@ -7,37 +7,45 @@
   app.component('prmSearchResultAvailabilityLineAfter', {
     template: '<hathi-trust-availability hide-online="true" hide-if-journal="false" ignore-copyright="true" entity-id="urn:mace:incommon:ucsb.edu"></hathi-trust-availability>'
   });
-  /**
-   *  Hides hold requests if there are none.
-  **/
-  app.component('prmLocationItemsAfter', {
-    bindings: { parentCtrl: '<' },
-    controller: 'LocationItemsAfterController'
+  // Adds the chat button
+  (function () {
+    var s = document.createElement('script');
+    s.src = 'https://v2.libanswers.com/load_chat.php?hash=2a9c4feddacd26449e7e029c28766afa';
+    document.body.appendChild(s);
+    var d = document.createElement('div');
+    d.id = 'libchat_2a9c4feddacd26449e7e029c28766afa';
+    document.body.appendChild(d);
+  })();
+  app.run(function ($templateCache) {
+    $templateCache.put('/primo-explore-after-searchbar/html/ucls-logo.html', '<div class="uc-library-search">\r\n    <md-button aria-label="UC Library Search" ng-click="$ctrl.navigateToHomePage()">\r\n      <img show-gt-xs hide-xs ng-src="{{$ctrl.getUclsLogo()}}" alt="UC Library Search Logo"/>\r\n    </md-button>\r\n</div>');
   });
-  
-  app.controller('LocationItemsAfterController', ['$scope', function ($scope) {
-    var vm = this.parentCtrl;
-    var statement = null;
-  
-    this.$onInit = function () {
-      // Keep checking until the availability statement loads
-      var availabilityInterval = window.setInterval(function () {
-        if (statement == null) {
-          statement = vm.loc.location.availabilityStatement;
-        } else {
-          // Stop the interval and check if statement needs updating
-          clearInterval(availabilityInterval);
-          if (statement.includes(", 0 holds")) {
-            statement = statement.replace(", 0 holds", "");
-            // Find the p element and replace the text.
-            var paragraph = document.evaluate("//p[@ng-if='$ctrl.currLoc.location.availabilityStatement']", document, null, XPathResult.ANY_TYPE, null);
-            paragraph = paragraph.iterateNext();
-            paragraph.innerHTML = statement;
-          }
-        }
-      }, 100);
-    };
-  }]);
+  /*** 
+   * 
+   * Alert bar displayed at top of Primo view.
+   * 
+   * Code courtesy of UCI
+   * 
+  ***/
+  var alertBanner = window.setInterval(function () {
+    var date = new Date();
+
+    /* different date conditions may be added to control when the banner appears */
+    if (date.getFullYear() == 2021 && date.getMonth() < 8) {
+      var prmAlertBar = document.getElementsByClassName('topbar-wrapper');
+      var alertBarDiv = document.createElement('div');
+      alertBarDiv.setAttribute('id', 'customAlertBar');
+      alertBarDiv.setAttribute('style', 'align-content: center;align-items: center;');
+      alertBarDiv.setAttribute('layout-align', 'center center');
+      var alertBarInnerDiv = document.createElement('div');
+      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #fcd02f;padding: 3px 0;font-size: 16px;');
+
+      /* alert banner message to customize */
+      alertBarInnerDiv.innerHTML = 'Changes are coming! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.';
+      alertBarDiv.appendChild(alertBarInnerDiv);
+      prmAlertBar[0].prepend(alertBarDiv);
+      clearInterval(alertBanner);
+    }
+  }, 5000);
   /**
    * 
    * Courtesy of https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
@@ -83,13 +91,16 @@
       templateUrl: 'custom/01UCSB_INST-UCSB/html/prm-brief-result-container-after.html'
     });
   })();
-  /* UC Library Search Logo */
+  /**
+   * 
+   * UC Library Search Logo
+   * 
+  **/
   app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
     var vm = this;
   
     this.navigateToHomePage = function () {
       var params = $location.search();
-      console.log(params);
       var vid = params.vid;
       var lang = params.lang || "en_US";
       var split = $location.absUrl().split('/discovery/');
@@ -114,115 +125,6 @@
     controller: 'SearchBarAfterController',
     templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
   });
-  app.value('searchTargets', [{
-    "name": "Worldcat",
-    "desc": "for advanced search and filtering options",
-    "url": "https://110105.on.worldcat.org/v2/search?",
-    "img": "custom/01UCSB_INST-UCSB/img/worldcat.png",
-    "alt": "Worldcat Logo",
-    mapping: function mapping(queries, filters) {
-      var query_mappings = {
-        'any': 'kw',
-        'title': 'ti',
-        'creator': 'au',
-        'subject': 'su',
-        'isbn': 'bn',
-        'issn': 'n2'
-      };
-      try {
-        return 'queryString=' + queries.map(function (part) {
-          var terms = part.split(',');
-          var type = query_mappings[terms[0]] || 'kw';
-          var string = terms[2] || '';
-          var join = terms[3] || '';
-          return type + ':' + string + ' ' + join + ' ';
-        }).join('');
-      } catch (e) {
-        return '';
-      }
-    }
-  }, {
-    "name": "Google Scholar",
-    "url": "https://scholar.google.com/scholar?q=",
-    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png",
-    "alt": "Google Scholar Logo",
-    mapping: function mapping(queries, filters) {
-      try {
-        return queries.map(function (part) {
-          return part.split(",")[2] || "";
-        }).join(' ');
-      } catch (e) {
-        return '';
-      }
-    }
-  }]);
-  /*
-   * From https://github.com/alliance-pcsg/primo-explore-external-search
-   *
-   * With customizations, all commented below.
-   */
-  
-  angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfter', {
-    bindings: { parentCtrl: '<' },
-    controller: ['externalSearchService', function (externalSearchService) {
-      externalSearchService.controller = this.parentCtrl;
-      externalSearchService.addExtSearch();
-    }]
-  }).component('prmPageNavMenuAfter', {
-    controller: ['externalSearchService', function (externalSearchService) {
-      if (externalSearchService.controller) externalSearchService.addExtSearch();
-    }]
-  }).component('prmFacetExactAfter', {
-    bindings: { parentCtrl: '<' },
-    template: '\n      <div ng-if="name === \'External Search\'">\n        <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n          <div class="section-content animate-max-height-variable" id="external-search">\n            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n              <div class="md-chip-content layout-row" role="button" tabindex="0">\n                <strong dir="auto" title="{{ target.name }}">\n                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                    <img ng-src="{{ target.img }}" width="30" height="30"/> {{ target.name }}\n                  </a>\n                  <span class="desc">{{target.desc}}</span>\n                </strong>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>',
-    controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
-      $scope.name = this.parentCtrl.facetGroup.name;
-      $scope.targets = searchTargets;
-      var query = $location.search().query;
-      var filter = $location.search().pfilter;
-      $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
-      $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
-    }]
-  }).factory('externalSearchService', function () {
-    return {
-      get controller() {
-        return this.prmFacetCtrl || false;
-      },
-      set controller(controller) {
-        this.prmFacetCtrl = controller;
-      },
-      addExtSearch: function addExtSearch() {
-        if (this.prmFacetCtrl.$stateParams.search_scope != 'CourseReserves') {
-          var xx = this;
-          if (xx.prmFacetCtrl.$stateParams.search_scope == 'wcat_profile') {
-            xx.prmFacetCtrl.facetService.results.unshift({
-              name: 'External Search',
-              displayedType: 'exact',
-              limitCount: 0,
-              facetGroupCollapsed: false,
-              values: undefined
-            });
-          } else {
-            var checkExist = setInterval(function () {
-              if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
-                if (xx.prmFacetCtrl.facetService.results.name != "External Search") {
-                  xx.prmFacetCtrl.facetService.results.unshift({
-                    name: 'External Search',
-                    displayedType: 'exact',
-                    limitCount: 0,
-                    facetGroupCollapsed: false,
-                    values: undefined
-                  });
-                }
-                clearInterval(checkExist);
-              }
-            }, 50);
-          }
-        }
-      }
-    };
-  });
-  
   angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'https://catalog.hathitrust.org/api/volumes/brief/json/').config(['$sceDelegateProvider', 'hathiTrustBaseUrl', function ($sceDelegateProvider, hathiTrustBaseUrl) {
     var urlWhitelist = $sceDelegateProvider.resourceUrlWhitelist();
     urlWhitelist.push(hathiTrustBaseUrl + '**');
@@ -404,4 +306,111 @@
                   </a>\
                 </span>'
   });
-  })();
+  
+  app.value('searchTargets', [{
+    "name": "Worldcat",
+    "url": "https://110105.on.worldcat.org/v2/search?",
+    "img": "custom/01UCSB_INST-UCSB/img/worldcat.png",
+    "alt": "Worldcat logo",
+    mapping: function mapping(queries, filters) {
+      var query_mappings = {
+        'any': 'kw',
+        'title': 'ti',
+        'creator': 'au',
+        'subject': 'su',
+        'isbn': 'bn',
+        'issn': 'n2'
+      };
+      try {
+        return 'queryString=' + queries.map(function (part) {
+          var terms = part.split(',');
+          var type = query_mappings[terms[0]] || 'kw';
+          var string = terms[2] || '';
+          var join = terms[3] || '';
+          return type + ':' + string + ' ' + join + ' ';
+        }).join('');
+      } catch (e) {
+        return '';
+      }
+    }
+  }, {
+    "name": "Google Scholar",
+    "url": "https://scholar.google.com/scholar?q=",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png",
+    "alt": "Google Scholar Logo",
+    mapping: function mapping(queries, filters) {
+      try {
+        return queries.map(function (part) {
+          return part.split(",")[2] || "";
+        }).join(' ');
+      } catch (e) {
+        return '';
+      }
+    }
+  }]);
+  /*
+   * From https://github.com/alliance-pcsg/primo-explore-external-search
+   *
+   * With customizations, all commented below.
+   */
+  angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfter', {
+    bindings: { parentCtrl: '<' },
+    controller: ['externalSearchService', function (externalSearchService) {
+      externalSearchService.controller = this.parentCtrl;
+      externalSearchService.addExtSearch();
+    }]
+  }).component('prmPageNavMenuAfter', {
+    controller: ['externalSearchService', function (externalSearchService) {
+      if (externalSearchService.controller) externalSearchService.addExtSearch();
+    }]
+  }).component('prmFacetExactAfter', {
+    bindings: { parentCtrl: '<' },
+    template: '\n      <div ng-if="name === \'External Search\'">\n        <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n          <div class="section-content animate-max-height-variable" id="external-search">\n            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n              <div class="md-chip-content layout-row" role="button" tabindex="0">\n                <strong dir="auto" title="{{ target.name }}">\n                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                    <img ng-src="{{ target.img }}" width="30" height="30"/> {{ target.name }}\n                  </a>\n                  <span class="desc">{{target.desc}}</span>\n                </strong>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>',
+    controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
+      $scope.name = this.parentCtrl.facetGroup.name;
+      $scope.targets = searchTargets;
+      var query = $location.search().query;
+      var filter = $location.search().pfilter;
+      $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
+      $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+    }]
+  }).factory('externalSearchService', function () {
+    return {
+      get controller() {
+        return this.prmFacetCtrl || false;
+      },
+      set controller(controller) {
+        this.prmFacetCtrl = controller;
+      },
+      addExtSearch: function addExtSearch() {
+        if (this.prmFacetCtrl.$stateParams.search_scope != 'CourseReserves') {
+          var xx = this;
+          if (xx.prmFacetCtrl.$stateParams.search_scope == 'wcat_profile') {
+            xx.prmFacetCtrl.facetService.results.unshift({
+              name: 'External Search',
+              displayedType: 'exact',
+              limitCount: 0,
+              facetGroupCollapsed: false,
+              values: undefined
+            });
+          } else {
+            var checkExist = setInterval(function () {
+              if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
+                if (xx.prmFacetCtrl.facetService.results.name != "External Search") {
+                  xx.prmFacetCtrl.facetService.results.unshift({
+                    name: 'External Search',
+                    displayedType: 'exact',
+                    limitCount: 0,
+                    facetGroupCollapsed: false,
+                    values: undefined
+                  });
+                }
+                clearInterval(checkExist);
+              }
+            }, 50);
+          }
+        }
+      }
+    };
+  });
+})();
