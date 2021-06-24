@@ -1,8 +1,8 @@
-/***
-
-  UCSB Theme
-  
-***/
+/**
+ *
+ * UCSB-themed elements
+ *
+**/
 /*Top Banner Background Color */
 .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1{
   background-color: #18335D;
@@ -20,7 +20,7 @@ prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-
   background-color: #00468B; 
 }
 
-/* Make logo larger, be default it is not displayed as sized */
+/*Make logo larger, be default it is not displayed as sized*/
 prm-logo .product-logo {
   padding: .25em;
 }
@@ -86,7 +86,6 @@ prm-brief-result-container .media-content-type, md-menu-content .menu-title {
 div.bar.alert-bar.layout-align-center-center.layout-row{
   background-color: #FFCE34;
   border-color: #FFCE34;
-display: none;
 }
 
 /* Item Actions to UCSB blue */
@@ -153,5 +152,79 @@ prm-brief-result .item-title span {
 
 /* Spacing for View Full Records' Details Service */
 div.item-details-element {
-padding-bottom: .15em;
+padding-bottom: .05em;
+}
+
+/* Spacing for special br class injected via normalization rules */
+br.note {
+  display: block; /* width */
+  content: " "; /* clears default height */
+  margin-top: 7px; /* height */
+}
+
+table.search-tip-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 13px;
+}
+
+th.search-tip-table-header, td.search-tip-table-description {
+text-align: left;
+padding-right: 2.5%;
+padding-bottom: 2.5%;
+padding-left: 2.5%;
+border: 1px solid black;
+}
+
+td.search-tip-table-example {
+padding-left: 5%;
+border: 1px solid black;
+}
+
+td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+padding-right: 2.5%;
+padding-left: 2.5%;
+border: 1px solid black;
+text-align: left;
+}
+
+td.search-tip-table-operator-long {
+word-break: break-word;
+}
+
+/* Search tip table on homepage */
+@media (min-width: 900px) {
+table.search-tip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: inherit;
+}
+
+th.search-tip-table-header, td.search-tip-table-description {
+  padding-right: 5%;
+  border: none;
+  padding-left: 7.5%;
+}
+
+td.search-tip-table-example {
+  padding-left: 5%;
+  border: none;
+}
+
+td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+  border: none;
+  word-break: normal;
+}
+}
+
+th.search-tip-table-header {
+display: none;
+}
+
+md-card.default-card {
+padding: 2.5%;
+}
+
+p.search-help-link {
+padding-left: 2.5%;
 }

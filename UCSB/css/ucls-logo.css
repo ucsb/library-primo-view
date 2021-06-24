@@ -1,0 +1,51 @@
+/**
+ *
+ * UC Library Search Logo
+ *
+**/
+/* hide the logo on x-small screens */
+.uc-library-search-logo {
+  display: none;
+}
+
+/* no hover effect */
+.uc-library-search-logo button {
+  background: transparent!important;
+}
+
+@media (min-width: 970px) {
+  .search-wrapper {
+    margin-left: 20%;
+  }
+
+  .search-wrapper .flex-lg-10 {
+    display: none;
+  }
+
+  .search-wrapper .flex-lg-65 {
+    max-width: 80%;
+  }
+
+  .uc-library-search-logo {
+    display: block;
+    width: 20%;
+    text-align: center;
+    top: 30px;
+    position: absolute;
+  }
+
+  .uc-library-search-logo button {
+    margin-top: 0;
+  }
+  
+  .uc-library-search-logo img {
+    width: 70%;
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .uc-library-search-logo {
+    top: 1.5em;
+  }
+}

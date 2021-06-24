@@ -1,8 +1,8 @@
-/***
-
-  Alert Bar
-  
-***/
+/**
+ *
+ * Alert Bar
+ *
+**/
 prm-topbar {
   height: inherit;
 }
@@ -14,171 +14,393 @@ prm-topbar .top-nav-bar {
 /* Uncomment when no longer need alert bar */
 /*
 prm-top-bar-before {
-  display: none; 
+  display: none;
 }
 */
-/***
-
-  UCSB Theme
-  
-***/
-/*Top Banner Background Color */
-.prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1{
-  background-color: #18335D;
+/**
+ *
+ * LibChat Widget CSS
+ *
+**/
+.s-lch-widget-float {
+  bottom: 200px !important;
+  height: 65%;
+  margin-Top: 15%;
 }
+.s-lch-widget-float.open {
+  height: 60% !important;
+  margin-top: 8% !important;
+}
+@media (max-width: 1200px) {
+  .s-lch-widget-float {
+    bottom: 190px !important;
+    height: 65%;
+    margin-Top: 15%;
+  }
+  .s-lch-widget-float.open {
+    height: 60% !important;
+    margin-top: 8% !important;
+  }
+}
+@media (max-width: 930px) {
+  .s-lch-widget-float {
+    bottom: 250px !important;
+  }
+  .s-lch-widget-float.open {
+    height: 56% !important;
+    margin-top: 12% !important;
+  }
+}
+@media (max-width: 600px) {
+  .s-lch-widget-float {
+    bottom: 20px !important;
+    height: 80%;
+    margin-Top: 20%;
+  }
+  .s-lch-widget-float.open {
+    height: 80% !important;
+    margin-top: 20% !important;
+  }
+}
+/**
+ *
+ * Style for added links in Brief Result container (e.g. Finding Aids)
+ *
+**/
+#briefResultAfterFindingAid {
+    margin:0px;
+    padding:0px;
+    padding-bottom:10px;
+    vertical-align: middle;
+}
+
+prm-brief-result-container.list-item:hover {
+    background:#ffffff;
+}
+
+#briefResultAfterFindingAid a {
+    color:#3d6e94;
+}
+
+#briefResultAfterFindingAid > .layout-row > .flex-* {
+    padding:0px;
+    margin-top:0px;
+}
+
+#briefResultAfterFindingAid > .md-button {
+    margin:0px !important;
+}
+
+#briefResultAfterFindingAid > .spaceLeft {
+    padding-left:5px;
+}
+
+#briefResultAfterFindingAid > .marginLeftFindingAid {
+    padding-left:122px;
+}
+
+#briefResultAfterFindingAid > .marginLeftFindingAid2 {
+    padding-left:140px;
+}
+
+#briefResultAfterFindingAid > .spaceLeft40 {
+    padding-left:45px;
+}
+
+#briefResultAfterFindingAid > .folder {
+    font-size: 36px;
+    color: #7b8995;
+}
+/**
+ *
+ * UC Library Search Logo
+ *
+**/
+/* hide the logo on x-small screens */
+.uc-library-search-logo {
+  display: none;
+}
+/* no hover effect */
+.uc-library-search-logo button {
+  background: transparent!important;
+}
+@media (min-width: 970px) {
+  .search-wrapper {
+    margin-left: 20%;
+  }
+  .search-wrapper .flex-lg-10 {
+    display: none;
+  }
+  .search-wrapper .flex-lg-65 {
+    max-width: 80%;
+  }
+  .uc-library-search-logo {
+    display: block;
+    width: 20%;
+    text-align: center;
+    top: 30px;
+    position: absolute;
+  }
+  .uc-library-search-logo button {
+    margin-top: 0;
+  }
+  .uc-library-search-logo img {
+    width: 70%;
+    max-width: 300px;
+  }
+}
+@media (min-width: 1300px) {
+  .uc-library-search-logo {
+    top: 1.5em;
+  }
+}
+/**
+ *
+ * UCSB-themed elements
+ *
+**/
+/*Top Banner Background Color */
+  .prm-primary-bg.prm-hue1, prm-spinner.prm-hue1.overlay-cover.light-on-dark:after, prm-topbar .top-nav-bar, prm-search-bar.prm-hue1{
+    background-color: #18335D;
+  }
 
 /*!!!!!!!  TOPBAR - USER AREA - HOVER COLOR !!!!!!!!*/
-md-fab-toolbar md-toolbar {
-  background-color: #18335D !important;
-  pointer-events: none;
-  z-index: 23;
-}
-
+  md-fab-toolbar md-toolbar {
+    background-color: #18335D !important;
+    pointer-events: none;
+    z-index: 23;
+  }
+  
 /*Search Bar Wrapper color */
-prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
-  background-color: #00468B; 
-}
+  prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar {
+    background-color: #00468B; 
+  }
 
-/* Make logo larger, be default it is not displayed as sized */
+/*Make logo larger, be default it is not displayed as sized*/
 prm-logo .product-logo {
-  padding: .25em;
+    padding: .25em;
 }
 
-prm-logo .product-logo a:hover {
-  background-color:transparent;
-  text-transform:none;
-  box-shadow: none;
-}
-prm-logo .logo-image, prm-logo img {
-  max-height: 60px;
-}
+  prm-logo .product-logo a:hover {
+    background-color:transparent;
+    text-transform:none;
+    box-shadow: none;
+  }
+  prm-logo .logo-image, prm-logo img {
+    max-height: 60px;
+  }
 
 /* Hide Tags feature in Detailed Display */
-[aria-label="Tags"]{
-  display:none;
-}
-#tags {
-  display:none;
-}
+  [aria-label="Tags"]{
+    display:none;
+  }
+  #tags {
+    display:none;
+  }
 
 /* user name to UCSB light blue */
-prm-user-area .user-menu-button .user-name {
-  color: #59B6E6;
-}
-
+  prm-user-area .user-menu-button .user-name {
+    color: #59B6E6;
+  }
+  
 /* Advance search radio bottons to UCSB blue */
-.new-result-item .list-item-count, .prm-secondary-bg.prm-hue1, md-input-container:after, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-radio-button.md-checked ._md-on, md-radio-button.md-checked .md-on, md-tabs md-ink-bar  {
-  background-color: #00468B;
-}
-.md-input-container-dummy>.md-select-dummy:focus .md-select-value, .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, .prm-secondary-border.prm-hue1, md-radio-button.md-checked ._md-off, md-radio-button.md-checked .md-off, md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value { 
-  border-color: #00468B;
-}
+  .new-result-item .list-item-count, .prm-secondary-bg.prm-hue1, md-input-container:after, md-progress-linear[md-mode=indeterminate].header-progress-bar .prm-hue1.md-bar, md-radio-button.md-checked ._md-on, md-radio-button.md-checked .md-on, md-tabs md-ink-bar  {
+    background-color: #00468B;
+  }
+  .md-input-container-dummy>.md-select-dummy:focus .md-select-value, .md-input-focused .md-input-container-dummy>.md-select-dummy .md-select-value, .md-input-focused md-select .md-select-value, .md-input-focused md-select:not([disabled]) .md-select-value, .prm-secondary-border.prm-hue1, md-radio-button.md-checked ._md-off, md-radio-button.md-checked .md-off, md-select:focus .md-select-value, md-select:not([disabled]):focus .md-select-value { 
+    border-color: #00468B;
+  }
 
 /* Advance search arrow icon to  UCSB Dark Blue */
-prm-browse-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-journals-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-tags-search-bar .advanced-search-wrapper .search-string .string-block prm-icon 
-.md-button.button-confirm {
-  color: #18335D;
-}
+  prm-browse-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-journals-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-search-bar .advanced-search-wrapper .search-string .string-block prm-icon, prm-tags-search-bar .advanced-search-wrapper .search-string .string-block prm-icon 
+  .md-button.button-confirm {
+    color: #18335D;
+  }
 
 /* Journal and Browse search bar to UCSB Blue */
-.prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
-  background-color: #00468B;
-}
+  .prm-primary-bg, prm-browse-search-bar, prm-journals-search-bar, prm-search-bar, prm-spinner.overlay-cover.light-on-dark:after, prm-tags-search-bar {
+    background-color: #00468B;
+  }
 
 /* Journal and Browse search box to UCSB yellow*/
-.bar.alert-bar, .classic-input .search-scope, .prm-alert-border {
-  background-color: #FFCE34;
-  border-color: #FFCE34;
-}
+  .bar.alert-bar, .classic-input .search-scope, .prm-alert-border {
+    background-color: #FFCE34;
+    border-color: #FFCE34;
+  }
 
 /* List Item Count number to dark grey */
-.list-item-count {
-  color: #4D4E4E;
-}
+  .list-item-count {
+    color: #4D4E4E;
+  }
 
 /* Media type color to dark grey */
-prm-brief-result-container .media-content-type, md-menu-content .menu-title {
-  color: #4D4E4E;
-}
+  prm-brief-result-container .media-content-type, md-menu-content .menu-title {
+    color: #4D4E4E;
+  }
 
 /* Alert bar to UCSB yellow*/
-div.bar.alert-bar.layout-align-center-center.layout-row{
-  background-color: #FFCE34;
-  border-color: #FFCE34;
-display: none;
-}
+  div.bar.alert-bar.layout-align-center-center.layout-row{
+    background-color: #FFCE34;
+    border-color: #FFCE34;
+  }
 
 /* Item Actions to UCSB blue */
-.prm-primary-color, .result-item-actions .custom-button, .result-item-actions .more-options-button, .md-autocomplete-suggestions .suggestion-scope, md-tab-content .tab-content-header md-input-container md-select-value .md-text {
-  color: #00468B;
-}
+  .prm-primary-color, .result-item-actions .custom-button, .result-item-actions .more-options-button, .md-autocomplete-suggestions .suggestion-scope, md-tab-content .tab-content-header md-input-container md-select-value .md-text {
+    color: #00468B;
+  }
 
 /* Background Color to UCSB beige */
-.prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, .__xs prm-facet,
-.__sm prm-facet, .__sm .sidebar,
-.__xs .sidebar, prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button, prm-full-view-cont .recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider, md-card .card-content-block {
-  background-color: #EDE9E1;
-  border-color: #EDE9E1;
-}
+  .prm-background, html, body, prm-search-bar .simple-search-wrapper .search-options:after, prm-search-bar .simple-search-wrapper .search-options md-divider, .__xs prm-facet,
+  .__sm prm-facet, .__sm .sidebar,
+  .__xs .sidebar, prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button, prm-full-view-cont .recommendations-title:after, prm-full-view-cont .recommendations-title prm-icon, md-virtual-repeat-container#prm-simple-search .md-autocomplete-suggestions md-divider, md-card .card-content-block {
+    background-color: #EDE9E1;
+    border-color: #EDE9E1;
+  }
 
 /* "show more", "refine" in left sidebar to UCSB blue */
-.link-alt-color, .section-title prm-icon{
-  color: #00468B;
-}
-.md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link{
-  color: #00468B;
-}
+  .link-alt-color, .section-title prm-icon{
+    color: #00468B;
+  }
+  .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link{
+    color: #00468B;
+  }
 
 /* Result Title Color to UCSB blue */
-prm-brief-result .item-title span {
-  color: #00468B;
-}
+  prm-brief-result .item-title span {
+    color: #00468B;
+  }
 
 /* result highlight color to UCSB yellow */
-.text-highlight,mark{
-  box-shadow:inset 0 -.3em 0 0 #FFCE34
-}
+  .text-highlight,mark{
+    box-shadow:inset 0 -.3em 0 0 #FFCE34
+  }
 
 /* "full text", "Available at" to UCSB dark Blue */
-.fulltext, .fulltext_linktorsrc, .not_restricted, .prm-positive, .status-available, [class*=available], [class*=FT] {
-  color: #18335D;
-}
+  .fulltext, .fulltext_linktorsrc, .not_restricted, .prm-positive, .status-available, [class*=available], [class*=FT] {
+    color: #18335D;
+  }
 
 /* Location availablity to UCSB colors */ 
-[class*=available]>span {
-  color: #18335D;
-}
-[class*=available]>span:first-of-type {
-  color: #00468B;
-}
-
+  [class*=available]>span {
+    color: #18335D;
+  }
+  [class*=available]>span:first-of-type {
+    color: #00468B;
+  }
+  
 /* "Load more results" to UCSB Dark Blue */
-.md-button.button-confirm {
-  color: #18335D;
-}
-.md-button.button-confirm:hover:not([disabled]) {
-  color: #080606;
-  background-color: rgba(58,58,58,.1);
-}
-
+  .md-button.button-confirm {
+    color: #18335D;
+  }
+  .md-button.button-confirm:hover:not([disabled]) {
+    color: #080606;
+    background-color: rgba(58,58,58,.1);
+  }
+  
 /* "Sign IN" door icon and hover to grey */
-.bar prm-authentication .md-button, .md-button.button-as-link {
-  color: #3a3a3a;
-}
-.bar prm-authentication .md-button._md-focused:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link:hover:not([disabled]) {
-  color: #080606;
-  background-color: rgba(58,58,58,.1);
-}
+  .bar prm-authentication .md-button, .md-button.button-as-link {
+    color: #3a3a3a;
+  }
+  .bar prm-authentication .md-button._md-focused:not([disabled]), .bar prm-authentication .md-button.hovered:not([disabled]), .bar prm-authentication .md-button.md-focused:not([disabled]), .bar prm-authentication .md-button:focus:not([disabled]), .bar prm-authentication .md-button:hover:not([disabled]), .md-button.button-as-link._md-focused:not([disabled]), .md-button.button-as-link.hovered:not([disabled]), .md-button.button-as-link.md-focused:not([disabled]), .md-button.button-as-link:focus:not([disabled]), .md-button.button-as-link:hover:not([disabled]) {
+    color: #080606;
+    background-color: rgba(58,58,58,.1);
+  }
 
 /* Spacing for View Full Records' Details Service */
 div.item-details-element {
-padding-bottom: .15em;
+  padding-bottom: .05em;
 }
-/***
 
-  HathiTrust link
+/* Spacing for special br class injected via normalization rules */
+br.note {
+display: block; /* width */
+content: " "; /* clears default height */
+margin-top: 7px; /* height */
+}
 
-***/
+table.search-tip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th.search-tip-table-header, td.search-tip-table-description {
+  text-align: left;
+  padding-right: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 2.5%;
+  border: 1px solid black;
+}
+
+td.search-tip-table-example {
+  padding-left: 5%;
+  border: 1px solid black;
+}
+
+td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  border: 1px solid black;
+  text-align: left;
+}
+
+td.search-tip-table-operator-long {
+  word-break: break-word;
+}
+
+/* Search tip table on homepage */
+@media (min-width: 900px) {
+  table.search-tip-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: inherit;
+  }
+
+  th.search-tip-table-header, td.search-tip-table-description {
+    padding-right: 5%;
+    border: none;
+    padding-left: 7.5%;
+  }
+  
+  td.search-tip-table-example {
+    padding-left: 5%;
+    border: none;
+  }
+  
+  td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+    border: none;
+    word-break: normal;
+  }
+}
+
+th.search-tip-table-header {
+	display: none;
+}
+
+md-card.default-card {
+  padding: 2.5%;
+}
+
+p.search-help-link {
+	padding-left: 2.5%;
+}
+/**
+ * 
+ * External search
+ *
+**/
+#external-search img {
+  float: left;
+  margin-right: 8px;
+}
+#external-search a {
+  font-weight: bold;
+}
+#external-search span {
+  display: block;
+  color: #3a3a3a;
+}
+/* HathiTrust link */
 span.umnHathiTrustLink {
   margin-left: -5px;
 }

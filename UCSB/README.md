@@ -27,14 +27,3 @@ The development package allows you to configure :
 
 - For each configuration type there is a specified folder in the custom package folder (that can be downloaded form your Primo Back Office)
 - In each folder you will find a specific README.md file with recipes/examples.
-
-
-
-
-
-
-
-
-
-
-
