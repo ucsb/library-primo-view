@@ -196,10 +196,17 @@ span.umnHathiTrustLink:hover md-icon svg {
  * Hide log-in options
  *
 **/
-#button.signInBtn {
+/* Stand-alone login page accessible from library homepage */
+prm-stand-alone-login {
   display: none;
 }
 
-prm-user-area-expandable {
+/* Top-right corner sign-in and account buttons */
+prm-user-area-expandable, #button.signInBtn {
+  display: none;
+}
+
+/* Favorites buttons (hidden to prevent use while signing-in is not available) */
+a#favorites-button, prm-save-to-favorites-button, button.md-icon-button.pin-button.md-button.md-primoExplore-theme.md-ink-ripple {
   display: none;
 }
