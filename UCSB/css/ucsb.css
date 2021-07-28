@@ -163,68 +163,72 @@ br.note {
 }
 
 table.search-tip-table {
-width: 100%;
-border-collapse: collapse;
-font-size: 13px;
-}
-
-th.search-tip-table-header, td.search-tip-table-description {
-text-align: left;
-padding-right: 2.5%;
-padding-bottom: 2.5%;
-padding-left: 2.5%;
-border: 1px solid black;
-}
-
-td.search-tip-table-example {
-padding-left: 5%;
-border: 1px solid black;
-}
-
-td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
-padding-right: 2.5%;
-padding-left: 2.5%;
-border: 1px solid black;
-text-align: left;
-}
-
-td.search-tip-table-operator-long {
-word-break: break-word;
-}
-
-/* Search tip table on homepage */
-@media (min-width: 900px) {
-table.search-tip-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: inherit;
+  font-size: 13px;
 }
 
 th.search-tip-table-header, td.search-tip-table-description {
-  padding-right: 5%;
-  border: none;
-  padding-left: 7.5%;
+  text-align: left;
+  padding-right: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 2.5%;
+  border: 1px solid black;
 }
 
 td.search-tip-table-example {
   padding-left: 5%;
-  border: none;
+  border: 1px solid black;
 }
 
 td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
-  border: none;
-  word-break: normal;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  border: 1px solid black;
+  text-align: left;
 }
+
+td.search-tip-table-operator-long {
+  word-break: break-word;
+}
+
+/* Search tip table on homepage */
+@media (min-width: 900px) {
+  table.search-tip-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: inherit;
+  }
+
+  th.search-tip-table-header, td.search-tip-table-description {
+    padding-right: 5%;
+    border: none;
+    padding-left: 7.5%;
+  }
+
+  td.search-tip-table-example {
+    padding-left: 5%;
+    border: none;
+  }
+
+  td.search-tip-table-scope, td.search-tip-table-operator, td.search-tip-table-operator-long {
+    border: none;
+    word-break: normal;
+  }
 }
 
 th.search-tip-table-header {
-display: none;
+  display: none;
 }
 
 md-card.default-card {
-padding: 2.5%;
+  padding: 2.5%;
 }
 
 p.search-help-link {
-padding-left: 2.5%;
+  padding-left: 2.5%;
+}
+
+prm-service-button > button > span {
+	color: #2c85d4;
 }
