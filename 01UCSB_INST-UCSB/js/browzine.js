@@ -43,11 +43,6 @@ document.head.appendChild(browzine.script);
 app.controller('prmSearchResultAvailabilityLineAfterController', function($scope) {
   window.browzine.primo.searchResult($scope);
 });
-
-app.component('prmSearchResultAvailabilityLineAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'prmSearchResultAvailabilityLineAfterController'
-});
 /**
  * ... End BrowZine - Primo Integration
 **/
