@@ -1,0 +1,16 @@
+/* Manually alphabetize the UC's in the institution facets */
+div[data-facet-group="institution"] .md-chips-wrap {
+  display: flex;
+  flex-flow: column;
+}
+div[data-facet-group="institution"] .md-chips-wrap .md-chip { margin-top: .5em; }
+div[data-facet-value="institution-6532"] { order:  1; margin-top: 0 !important; } /* Berkeley */
+div[data-facet-value="institution-3126"] { order:  2; } /* Davis */
+div[data-facet-value="institution-4701"] { order:  3; } /* Irvine */
+div[data-facet-value="institution-6533"] { order:  4; } /* Los Angeles */
+div[data-facet-value="institution-6534"] { order:  5; } /* Merced */
+div[data-facet-value="institution-4706"] { order:  6; } /* Riverside */
+div[data-facet-value="institution-6535"] { order:  7; } /* San Diego */
+div[data-facet-value="institution-6536"] { order:  8; } /* San Francisco */
+div[data-facet-value="institution-3776"] { order:  9; } /* Santa Barbara */
+div[data-facet-value="institution-4876"] { order: 10; } /* Santa Cruz */
