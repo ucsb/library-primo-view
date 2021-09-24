@@ -12,54 +12,11 @@ prm-topbar .top-nav-bar {
 }
 
 /* Uncomment when no longer need alert bar */
+/*
 prm-top-bar-before {
   display: none;
 }
-/**
- *
- * LibChat Widget CSS
- *
-**/
-.s-lch-widget-float {
-  bottom: 200px !important;
-  height: 65%;
-  margin-Top: 15%;
-}
-.s-lch-widget-float.open {
-  height: 60% !important;
-  margin-top: 8% !important;
-}
-@media (max-width: 1200px) {
-  .s-lch-widget-float {
-    bottom: 190px !important;
-    height: 65%;
-    margin-Top: 15%;
-  }
-  .s-lch-widget-float.open {
-    height: 60% !important;
-    margin-top: 8% !important;
-  }
-}
-@media (max-width: 930px) {
-  .s-lch-widget-float {
-    bottom: 250px !important;
-  }
-  .s-lch-widget-float.open {
-    height: 56% !important;
-    margin-top: 12% !important;
-  }
-}
-@media (max-width: 600px) {
-  .s-lch-widget-float {
-    bottom: 20px !important;
-    height: 80%;
-    margin-Top: 20%;
-  }
-  .s-lch-widget-float.open {
-    height: 80% !important;
-    margin-top: 20% !important;
-  }
-}
+*/
 /**
  *
  * Style for added links in Brief Result container (e.g. Finding Aids)
@@ -109,6 +66,22 @@ prm-brief-result-container.list-item:hover {
   font-size: 36px;
   color: #7b8995;
 }
+/* Manually alphabetize the UC's in the institution facets */
+div[data-facet-group="institution"] .md-chips-wrap {
+  display: flex;
+  flex-flow: column;
+}
+div[data-facet-group="institution"] .md-chips-wrap .md-chip { margin-top: .5em; }
+div[data-facet-value="institution-6532"] { order:  1; margin-top: 0 !important; } /* Berkeley */
+div[data-facet-value="institution-3126"] { order:  2; } /* Davis */
+div[data-facet-value="institution-4701"] { order:  3; } /* Irvine */
+div[data-facet-value="institution-6533"] { order:  4; } /* Los Angeles */
+div[data-facet-value="institution-6534"] { order:  5; } /* Merced */
+div[data-facet-value="institution-4706"] { order:  6; } /* Riverside */
+div[data-facet-value="institution-6535"] { order:  7; } /* San Diego */
+div[data-facet-value="institution-6536"] { order:  8; } /* San Francisco */
+div[data-facet-value="institution-3776"] { order:  9; } /* Santa Barbara */
+div[data-facet-value="institution-4876"] { order: 10; } /* Santa Cruz */
 /**
  *
  * UC Library Search Logo
