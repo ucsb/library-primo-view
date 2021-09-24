@@ -1,6 +1,7 @@
 /**
  * Begin BrowZine - Primo Integration...
 **/
+/**
 window.browzine = {
   api: "https://public-api.thirdiron.com/public/v1/libraries/88",
   apiKey: "0a35d6bf-4236-4be5-b795-cfa48ce87da9",
@@ -43,6 +44,7 @@ document.head.appendChild(browzine.script);
 app.controller('prmSearchResultAvailabilityLineAfterController', function($scope) {
   window.browzine.primo.searchResult($scope);
 });
+**/
 /**
  * ... End BrowZine - Primo Integration
 **/
