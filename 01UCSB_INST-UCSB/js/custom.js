@@ -175,6 +175,25 @@ jQueryScript.onload = function () {
   });
 };
 /**
+ * 
+ * Change top color when in sandbox environment.
+ * 
+**/
+var jQueryScript = document.createElement("script");
+jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
+document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+
+jQueryScript.onload = function () {
+  $(document).ready(function () {
+    var sandbox = "ucsb-psb.primo.exlibrisgroup.com";
+    if (sandbox === window.location.host) {
+      $(function () {
+        $("<style>").text("prm-search-bar, prm-journals-search-bar, prm-browse-search-bar, prm-tags-search-bar { background-color: #FFCE34; }").appendTo($("body"));
+      });
+    }
+  });
+};
+/**
  * Collapse institution list in full record for Primo VE
  */
 app.controller('prmAlmaOtherMembersAfterController', [function () {
@@ -416,10 +435,7 @@ angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'http
       for (var i = 0; i < ids.length; i++) {
         var recordId = Object.keys(bibData[ids[i]].records)[0];
         if (recordId) {
-          var foundRecord = { recordURL: "", rightsCode: "" };
-          foundRecord.recordURL = $q.resolve(bibData[ids[i]].records[recordId].recordURL);
-          foundRecord.rightsCode = $q.resolve(bibData[ids[i]].items[0].rightsCode);
-          return foundRecord;
+          return $q.resolve(bibData[ids[i]].records[recordId].recordURL);
         }
       }
       return $q.resolve(null);
@@ -503,29 +519,12 @@ angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'http
   var isOclcNum = function isOclcNum(value) {
     return value.match(/^(\(ocolc\))?\d+$/i);
   };
-
-  // Change text based on copyright status of resource
-  var isProtected = function isProtected(rightsCode) {
-    switch (rightsCode) {
-      case 'ic':
-        return 'Full Text Temporarily Available at HathiTrust';
-      case 'pd':
-        return 'Full Text Available at HathiTrust';
-      default:
-        return 'Full Text Temporarily Available at HathiTrust';
-    }
-  };
-
   var updateHathiTrustAvailability = function updateHathiTrustAvailability() {
     var hathiTrustIds = (self.prmSearchResultAvailabilityLine.result.pnx.addata.oclcid || []).filter(isOclcNum).map(function (id) {
       return 'oclc:' + id.toLowerCase().replace('(ocolc)', '');
     });
     hathiTrust[self.ignoreCopyright ? 'findRecord' : 'findFullViewRecord'](hathiTrustIds).then(function (res) {
-      if (res) {
-        var record = JSON.parse(JSON.stringify(res));
-        self.fullTextLink = formatLink(record.recordURL.$$state.value);
-        self.msg = isProtected(record.rightsCode.$$state.value);
-      }
+      if (res) self.fullTextLink = formatLink(res);
     });
   };
 }]).component('hathiTrustAvailability', {
