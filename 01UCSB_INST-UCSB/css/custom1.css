@@ -19,6 +19,31 @@ prm-top-bar-before {
 */
 /**
  *
+ * LibChat Widget CSS
+ *
+**/
+.s-lch-widget-float {
+  bottom: 100px !important;
+  height: 80%;
+  margin-Top: 10% !important;
+}
+.s-lch-widget-float.open {
+  height: 75% !important;
+  margin-top: 6% !important;
+}
+@media (max-width: 980) {
+  .s-lch-widget-float {
+    bottom: 200px !important;
+    height: 60%;
+    margin-Top: 6% !important;
+  }
+  .s-lch-widget-float.open {
+    height: 60% !important;
+    margin-top: 6% !important;
+  }
+}
+/**
+ *
  * Style for added links in Brief Result container (e.g. Finding Aids)
  *
 **/
