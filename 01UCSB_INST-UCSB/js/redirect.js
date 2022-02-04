@@ -1,6 +1,6 @@
 /**
-	Redirect users from undesired domains to branded domain for primo.
-**/
+ * Begin domain redirect
+ */
 var jQueryScript = document.createElement("script");
 jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
 document.getElementsByTagName("head")[0].appendChild(jQueryScript);
@@ -14,3 +14,6 @@ jQueryScript.onload = function() {
 	  }
 	});
 };
+/**
+ * End domain redirect
+ */

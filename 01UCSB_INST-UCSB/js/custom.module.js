@@ -1,9 +1,7 @@
-/***
- * 
- * Modules and templates
- * 
-***/
-var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability']);
+/**
+ * Begin modules and templates
+ */
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability', 'googleAnalytics']);
 
 app.component('prmSearchResultAvailabilityLineAfter', {
     /* HathiTrust template */
@@ -12,3 +10,6 @@ app.component('prmSearchResultAvailabilityLineAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'prmSearchResultAvailabilityLineAfterController'
   });
+/**
+ * End modules and templates
+ */

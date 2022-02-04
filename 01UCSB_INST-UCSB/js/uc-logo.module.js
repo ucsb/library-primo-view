@@ -1,7 +1,5 @@
 /**
- * 
- * UC Library Search Logo
- * 
+ * Begin secondary logo
 **/
 app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
 	var vm = this;
@@ -32,3 +30,6 @@ app.component('prmSearchBarAfter', {
 	controller: 'SearchBarAfterController',
 	templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
 });
+/**
+ * End secondary logo
+ */
