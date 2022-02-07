@@ -1,10 +1,7 @@
-/*** 
- * 
- * Alert bar displayed at top of Primo view.
- * 
+/**
+ * Begin Alert Bar
  * Code courtesy of UCI
- * 
- * ***/
+ */
 /*
 var alertBanner = window.setInterval(function () {
   var date = new Date();
@@ -35,3 +32,6 @@ var alertBanner = window.setInterval(function () {
   }
 }, 5000);
 */
+/**
+ * End Alert Bar
+ */

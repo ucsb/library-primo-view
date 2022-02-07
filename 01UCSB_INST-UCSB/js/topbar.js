@@ -1,7 +1,5 @@
 /**
- * 
- * Change top color when in sandbox environment.
- * 
+ * Begin sandbox adjustments
 **/
 var jQueryScript = document.createElement("script");
 jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
@@ -19,3 +17,6 @@ jQueryScript.onload = function() {
 	  }
 	});
 };
+/**
+ * End sandbox adjustments
+ */

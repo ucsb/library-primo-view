@@ -1,9 +1,7 @@
 /**
- * 
- * Courtesy of https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
- * This component add a "Finding Aid" button and make a link
- * 
-**/
+ * Begin Finding Aid
+ * Source: https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
+ */
 (function () {
   angular.module('viewCustom')
   .controller('prmBriefResultContainerAfterCtrl',['$location','$scope',function ($location,$scope) {
@@ -44,3 +42,6 @@
     templateUrl:'custom/01UCSB_INST-UCSB/html/prm-brief-result-container-after.html'
   });
 })();
+/**
+ * End Finding Aid
+ */

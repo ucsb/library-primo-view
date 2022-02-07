@@ -1,5 +1,5 @@
 /**
- * Collapse institution list in full record for Primo VE
+ * Begin facet collapse
  */
  app.controller('prmAlmaOtherMembersAfterController', [function () {
   var vm = this.parentCtrl;
@@ -17,3 +17,6 @@ app.component('prmAlmaOtherMembersAfter', {
   controller: 'prmAlmaOtherMembersAfterController',
   template: ''
 });
+/**
+ * End facet collapse
+ */

@@ -2,12 +2,10 @@
 "use strict";
 'use strict';
 
-/***
- * 
- * Modules and templates
- * 
-***/
-var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability']);
+/**
+ * Begin modules and templates
+ */
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability', 'googleAnalytics']);
 
 app.component('prmSearchResultAvailabilityLineAfter', {
   /* HathiTrust template */
@@ -16,13 +14,13 @@ app.component('prmSearchResultAvailabilityLineAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'prmSearchResultAvailabilityLineAfterController'
 });
-/*** 
- * 
- * Alert bar displayed at top of Primo view.
- * 
+/**
+ * End modules and templates
+ */
+/**
+ * Begin Alert Bar
  * Code courtesy of UCI
- * 
- * ***/
+ */
 /*
 var alertBanner = window.setInterval(function () {
   var date = new Date();
@@ -54,8 +52,11 @@ var alertBanner = window.setInterval(function () {
 }, 5000);
 */
 /**
- * Begin BrowZine - Primo Integration...
-**/
+ * End Alert Bar
+ */
+/**
+ * Begin BrowZine
+ */
 window.browzine = {
   api: "https://public-api.thirdiron.com/public/v1/libraries/88",
   apiKey: "0a35d6bf-4236-4be5-b795-cfa48ce87da9",
@@ -99,9 +100,11 @@ app.controller('prmSearchResultAvailabilityLineAfterController', function ($scop
   window.browzine.primo.searchResult($scope);
 });
 /**
- * ... End BrowZine - Primo Integration
-**/
-// Adds the chat button
+ * End BrowZine
+ */
+/**
+ * Begin Libchat
+ */
 (function () {
   var s = document.createElement('script');
   s.src = 'https://v2.libanswers.com/load_chat.php?hash=2a9c4feddacd26449e7e029c28766afa';
@@ -111,11 +114,58 @@ app.controller('prmSearchResultAvailabilityLineAfterController', function ($scop
   document.body.appendChild(d);
 })();
 /**
- * 
- * Courtesy of https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
- * This component add a "Finding Aid" button and make a link
- * 
-**/
+ * End Libchat
+ */
+/**
+ * Begin Google Analytics
+ * Source: https://github.com/csudhlib/primo-explore-google-analytics
+ */
+angular.module('googleAnalytics', []);
+angular.module('googleAnalytics').run(function ($rootScope, $interval, analyticsOptions) {
+  if (analyticsOptions.hasOwnProperty("enabled") && analyticsOptions.enabled) {
+    if (analyticsOptions.hasOwnProperty("siteId") && analyticsOptions.siteId != '') {
+      if (typeof ga === 'undefined') {
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', analyticsOptions.siteId, { 'alwaysSendReferrer': true });
+        ga('set', 'anonymizeIp', true);
+      }
+    }
+    $rootScope.$on('$locationChangeSuccess', function (event, toState, fromState) {
+      if (analyticsOptions.hasOwnProperty("defaultTitle")) {
+        var documentTitle = analyticsOptions.defaultTitle;
+        var interval = $interval(function () {
+          if (document.title !== '') documentTitle = document.title;
+          if (window.location.pathname.indexOf('openurl') !== -1 || window.location.pathname.indexOf('fulldisplay') !== -1) if (angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).length === 0) return;else documentTitle = angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).text();
+
+          if (typeof ga !== 'undefined') {
+            if (fromState != toState) ga('set', 'referrer', fromState);
+            ga('set', 'location', toState);
+            ga('set', 'title', documentTitle);
+            ga('send', 'pageview');
+          }
+          $interval.cancel(interval);
+        }, 0);
+      }
+    });
+  }
+});
+angular.module('googleAnalytics').value('analyticsOptions', {
+  enabled: true,
+  siteId: 'UA-184141050-1',
+  defaultTitle: 'UCLS Santa Barbara sandbox'
+});
+/**
+ * End Google Analytics 
+ */
+/**
+ * Begin Finding Aid
+ * Source: https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
+ */
 (function () {
   angular.module('viewCustom').controller('prmBriefResultContainerAfterCtrl', ['$location', '$scope', function ($location, $scope) {
     var vm = this;
@@ -155,8 +205,11 @@ app.controller('prmSearchResultAvailabilityLineAfterController', function ($scop
   });
 })();
 /**
-	Redirect users from undesired domains to branded domain for primo.
-**/
+ * End Finding Aid
+ */
+/**
+ * Begin domain redirect
+ */
 var jQueryScript = document.createElement("script");
 jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
 document.getElementsByTagName("head")[0].appendChild(jQueryScript);
@@ -171,9 +224,10 @@ jQueryScript.onload = function () {
   });
 };
 /**
- * 
- * Change top color when in sandbox environment.
- * 
+ * End domain redirect
+ */
+/**
+ * Begin sandbox adjustments
 **/
 var jQueryScript = document.createElement("script");
 jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
@@ -190,7 +244,10 @@ jQueryScript.onload = function () {
   });
 };
 /**
- * Collapse institution list in full record for Primo VE
+ * End sandbox adjustments
+ */
+/**
+ * Begin facet collapse
  */
 app.controller('prmAlmaOtherMembersAfterController', [function () {
   var vm = this.parentCtrl;
@@ -208,11 +265,11 @@ app.component('prmAlmaOtherMembersAfter', {
   controller: 'prmAlmaOtherMembersAfterController',
   template: ''
 });
-
 /**
- * 
- * UC Library Search Logo
- * 
+ * End facet collapse
+ */
+/**
+ * Begin secondary logo
 **/
 app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
   var vm = this;
@@ -243,11 +300,176 @@ app.component('prmSearchBarAfter', {
   controller: 'SearchBarAfterController',
   templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
 });
-/***
-* 
-* HathiTrust controller and functions
-* 
-***/
+/**
+ * End secondary logo
+ */
+/**
+ * Begin External Search configuration
+ */
+app.value('searchTargets', [{
+  "name": "Worldcat",
+  "url": "https://ucsb.on.worldcat.org/v2/search?",
+  "img": "custom/01UCSB_INST-UCSB/img/worldcat.png",
+  "alt": "Worldcat logo",
+  mapping: function mapping(queries, filters) {
+    var query_mappings = {
+      'any': 'kw',
+      'title': 'ti',
+      'creator': 'au',
+      'subject': 'su',
+      'isbn': 'bn',
+      'issn': 'n2'
+    };
+    try {
+      return 'queryString=' + queries.map(function (part) {
+        var terms = part.split(',');
+        var type = query_mappings[terms[0]] || 'kw';
+        var string = terms[2] || '';
+        var join = terms[3] || '';
+        return type + ':' + string + ' ' + join + ' ';
+      }).join('');
+    } catch (e) {
+      return '';
+    }
+  }
+}, {
+  "name": "Google Scholar",
+  "url": "https://scholar-google-com.proxy.library.ucsb.edu:9443/scholar?q=",
+  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png",
+  "alt": "Google Scholar Logo",
+  mapping: function mapping(queries, filters) {
+    try {
+      return queries.map(function (part) {
+        return part.split(",")[2] || "";
+      }).join(' ');
+    } catch (e) {
+      return '';
+    }
+  }
+}]);
+/**
+ * End External Search configuration
+ */
+/*
+ * Begin External Search
+ * Source: https://github.com/alliance-pcsg/primo-explore-external-search
+ */
+angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: ['externalSearchService', function (externalSearchService) {
+    externalSearchService.controller = this.parentCtrl;
+    externalSearchService.addExtSearch();
+  }]
+}).component('prmPageNavMenuAfter', {
+  controller: ['externalSearchService', function (externalSearchService) {
+    if (externalSearchService.controller) externalSearchService.addExtSearch();
+  }]
+}).component('prmFacetExactAfter', {
+  bindings: { parentCtrl: '<' },
+  template: '\n      <div ng-if="name === \'External Search\'">\n        <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n          <div class="section-content animate-max-height-variable" id="external-search">\n            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n              <div id="external-search-item" class="md-chip-content layout-row" role="button" tabindex="0">\n                <strong dir="auto" title="{{ target.name }}">\n                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                    <img ng-src="{{ target.img }}" width="20" height="20"/> {{ target.name }}\n                  </a>\n                  <span class="desc">{{target.desc}}</span>\n                </strong>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>',
+  controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
+    $scope.name = this.parentCtrl.facetGroup.name;
+    $scope.targets = searchTargets;
+    var query = $location.search().query;
+    var filter = $location.search().pfilter;
+    $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
+    $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
+    /*
+    * Customized to replace "University of California" with "UC" in facets
+    * 
+    * Courtesy of UC Santa Cruz
+    */
+    if ($scope.name == 'institution') {
+      // Once the institutions facets load, find them in the document.
+      var institutionFacets = document.querySelector('[data-facet-group="institution"]');
+      // Facets are created and destroyed in the DOM when the group is toggled so watch for clicks
+      institutionFacets.addEventListener('click', function () {
+        // There is a slight delay as Alma loads the facets, so check on a tight interval
+        var i = 0;
+        var institutionsInterval = window.setInterval(function () {
+          var institutions = institutionFacets.getElementsByClassName('text-number-space');
+          // When found, cycle through the institutions and replace the text as appropriate
+          if (institutions.length > 0) {
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+              for (var _iterator2 = institutions[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var oneInst = _step2.value;
+
+                oneInst.textContent = oneInst.textContent.replace(',', '');
+                oneInst.textContent = oneInst.textContent.replace('University of California', 'UC');
+                oneInst.title = oneInst.title.replace(',', '');
+                oneInst.title = oneInst.title.replace('University of California', 'UC');
+                clearInterval(institutionsInterval);
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                  _iterator2.return();
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
+            }
+          }
+          // Only try 10 times before exiting.
+          i > 10 ? clearInterval(institutionsInterval) : i++;
+        }, 100);
+      });
+    } // End UC facet customization
+  }]
+}).factory('externalSearchService', function () {
+  return {
+    get controller() {
+      return this.prmFacetCtrl || false;
+    },
+    set controller(controller) {
+      this.prmFacetCtrl = controller;
+    },
+    addExtSearch: function addExtSearch() {
+      if (this.prmFacetCtrl.$stateParams.search_scope != 'CourseReserves') {
+        var xx = this;
+        if (xx.prmFacetCtrl.$stateParams.search_scope == 'wcat_profile') {
+          xx.prmFacetCtrl.facetService.results.unshift({
+            name: 'External Search',
+            displayedType: 'exact',
+            limitCount: 0,
+            facetGroupCollapsed: false,
+            values: undefined
+          });
+        } else {
+          var checkExist = setInterval(function () {
+            if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
+              if (xx.prmFacetCtrl.facetService.results.name != "External Search") {
+                xx.prmFacetCtrl.facetService.results.unshift({
+                  name: 'External Search',
+                  displayedType: 'exact',
+                  limitCount: 0,
+                  facetGroupCollapsed: false,
+                  values: undefined
+                });
+              }
+              clearInterval(checkExist);
+            }
+          }, 50);
+        }
+      }
+    }
+  };
+});
+/**
+ * End External Search
+ */
+/**
+ * Begin HathiTrust
+ */
 angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'https://catalog.hathitrust.org/api/volumes/brief/json/').config(['$sceDelegateProvider', 'hathiTrustBaseUrl', function ($sceDelegateProvider, hathiTrustBaseUrl) {
   var urlWhitelist = $sceDelegateProvider.resourceUrlWhitelist();
   urlWhitelist.push(hathiTrustBaseUrl + '**');
@@ -410,160 +632,7 @@ angular.module('hathiTrustAvailability', []).constant('hathiTrustBaseUrl', 'http
         </a>\
       </span>'
 });
-app.value('searchTargets', [{
-  "name": "Worldcat",
-  "url": "https://ucsb.on.worldcat.org/v2/search?",
-  "img": "custom/01UCSB_INST-UCSB/img/worldcat.png",
-  "alt": "Worldcat logo",
-  mapping: function mapping(queries, filters) {
-    var query_mappings = {
-      'any': 'kw',
-      'title': 'ti',
-      'creator': 'au',
-      'subject': 'su',
-      'isbn': 'bn',
-      'issn': 'n2'
-    };
-    try {
-      return 'queryString=' + queries.map(function (part) {
-        var terms = part.split(',');
-        var type = query_mappings[terms[0]] || 'kw';
-        var string = terms[2] || '';
-        var join = terms[3] || '';
-        return type + ':' + string + ' ' + join + ' ';
-      }).join('');
-    } catch (e) {
-      return '';
-    }
-  }
-}, {
-  "name": "Google Scholar",
-  "url": "https://scholar-google-com.proxy.library.ucsb.edu:9443/scholar?q=",
-  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png",
-  "alt": "Google Scholar Logo",
-  mapping: function mapping(queries, filters) {
-    try {
-      return queries.map(function (part) {
-        return part.split(",")[2] || "";
-      }).join(' ');
-    } catch (e) {
-      return '';
-    }
-  }
-}]);
-/*
- * From https://github.com/alliance-pcsg/primo-explore-external-search
- *
- * With customizations, all commented below.
+/**
+ * End HathiTrust
  */
-angular.module('externalSearch', []).value('searchTargets', []).component('prmFacetAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: ['externalSearchService', function (externalSearchService) {
-    externalSearchService.controller = this.parentCtrl;
-    externalSearchService.addExtSearch();
-  }]
-}).component('prmPageNavMenuAfter', {
-  controller: ['externalSearchService', function (externalSearchService) {
-    if (externalSearchService.controller) externalSearchService.addExtSearch();
-  }]
-}).component('prmFacetExactAfter', {
-  bindings: { parentCtrl: '<' },
-  template: '\n      <div ng-if="name === \'External Search\'">\n        <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n          <div class="section-content animate-max-height-variable" id="external-search">\n            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n              <div id="external-search-item" class="md-chip-content layout-row" role="button" tabindex="0">\n                <strong dir="auto" title="{{ target.name }}">\n                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                    <img ng-src="{{ target.img }}" width="20" height="20"/> {{ target.name }}\n                  </a>\n                  <span class="desc">{{target.desc}}</span>\n                </strong>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>',
-  controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
-    $scope.name = this.parentCtrl.facetGroup.name;
-    $scope.targets = searchTargets;
-    var query = $location.search().query;
-    var filter = $location.search().pfilter;
-    $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
-    $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
-    /*
-    * Customized to replace "University of California" with "UC" in facets
-    * 
-    * Courtesy of UC Santa Cruz
-    */
-    if ($scope.name == 'institution') {
-      // Once the institutions facets load, find them in the document.
-      var institutionFacets = document.querySelector('[data-facet-group="institution"]');
-      // Facets are created and destroyed in the DOM when the group is toggled so watch for clicks
-      institutionFacets.addEventListener('click', function () {
-        // There is a slight delay as Alma loads the facets, so check on a tight interval
-        var i = 0;
-        var institutionsInterval = window.setInterval(function () {
-          var institutions = institutionFacets.getElementsByClassName('text-number-space');
-          // When found, cycle through the institutions and replace the text as appropriate
-          if (institutions.length > 0) {
-            var _iteratorNormalCompletion2 = true;
-            var _didIteratorError2 = false;
-            var _iteratorError2 = undefined;
-
-            try {
-              for (var _iterator2 = institutions[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                var oneInst = _step2.value;
-
-                oneInst.textContent = oneInst.textContent.replace(',', '');
-                oneInst.textContent = oneInst.textContent.replace('University of California', 'UC');
-                oneInst.title = oneInst.title.replace(',', '');
-                oneInst.title = oneInst.title.replace('University of California', 'UC');
-                clearInterval(institutionsInterval);
-              }
-            } catch (err) {
-              _didIteratorError2 = true;
-              _iteratorError2 = err;
-            } finally {
-              try {
-                if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                  _iterator2.return();
-                }
-              } finally {
-                if (_didIteratorError2) {
-                  throw _iteratorError2;
-                }
-              }
-            }
-          }
-          // Only try 10 times before exiting.
-          i > 10 ? clearInterval(institutionsInterval) : i++;
-        }, 100);
-      });
-    } // End UC facet customization
-  }]
-}).factory('externalSearchService', function () {
-  return {
-    get controller() {
-      return this.prmFacetCtrl || false;
-    },
-    set controller(controller) {
-      this.prmFacetCtrl = controller;
-    },
-    addExtSearch: function addExtSearch() {
-      if (this.prmFacetCtrl.$stateParams.search_scope != 'CourseReserves') {
-        var xx = this;
-        if (xx.prmFacetCtrl.$stateParams.search_scope == 'wcat_profile') {
-          xx.prmFacetCtrl.facetService.results.unshift({
-            name: 'External Search',
-            displayedType: 'exact',
-            limitCount: 0,
-            facetGroupCollapsed: false,
-            values: undefined
-          });
-        } else {
-          var checkExist = setInterval(function () {
-            if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
-              if (xx.prmFacetCtrl.facetService.results.name != "External Search") {
-                xx.prmFacetCtrl.facetService.results.unshift({
-                  name: 'External Search',
-                  displayedType: 'exact',
-                  limitCount: 0,
-                  facetGroupCollapsed: false,
-                  values: undefined
-                });
-              }
-              clearInterval(checkExist);
-            }
-          }, 50);
-        }
-      }
-    }
-  };
-});
 })();
