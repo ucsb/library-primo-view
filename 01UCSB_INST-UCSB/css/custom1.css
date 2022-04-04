@@ -91,6 +91,12 @@ prm-brief-result-container.list-item:hover {
   font-size: 36px;
   color: #7b8995;
 }
+prm-alma-viewit-items h4 {
+  display: none !important;
+}
+prm-alma-viewit-items h4.ng-scope {
+  display: inherit;
+  }
 /* Manually alphabetize the UC's in the institution facets */
 div[data-facet-group="institution"] .md-chips-wrap {
   display: flex;
@@ -122,16 +128,21 @@ div[data-facet-value="institution-4876"] { order: 10; } /* Santa Cruz */
   background: transparent!important;
 }
 
-@media (min-width: 970px) {
-  .search-wrapper {
+
+
+@media (min-width: 900px) {
+  .search-wrapper, prm-atoz-search-bar > div.layout-row,
+  prm-browse-search-bar > div.layout-row {
     margin-left: 20%;
   }
 
-  .search-wrapper .flex-lg-10 {
+  .search-wrapper .flex-lg-10, prm-atoz-search-bar > div.layout-row > div.flex-xl-20,
+  prm-browse-search-bar > div.layout-row > div.flex-xl-20 {
     display: none;
   }
 
-  .search-wrapper .flex-lg-65 {
+  .search-wrapper .flex-lg-65, prm-atoz-search-bar > div.layout-row > div.flex-lg-55,
+  prm-browse-search-bar > div.layout-row > div.flex-lg-55 {
     max-width: 80%;
   }
 

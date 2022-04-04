@@ -1,0 +1,6 @@
+prm-alma-viewit-items h4 {
+  display: none !important;
+}
+prm-alma-viewit-items h4.ng-scope {
+  display: inherit;
+  }

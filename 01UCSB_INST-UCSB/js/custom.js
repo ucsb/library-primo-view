@@ -117,52 +117,6 @@ app.controller('prmSearchResultAvailabilityLineAfterController', function ($scop
  * End Libchat
  */
 /**
- * Begin Google Analytics
- * Source: https://github.com/csudhlib/primo-explore-google-analytics
- */
-angular.module('googleAnalytics', []);
-angular.module('googleAnalytics').run(function ($rootScope, $interval, analyticsOptions) {
-  if (analyticsOptions.hasOwnProperty("enabled") && analyticsOptions.enabled) {
-    if (analyticsOptions.hasOwnProperty("siteId") && analyticsOptions.siteId != '') {
-      if (typeof ga === 'undefined') {
-        (function (i, s, o, g, r, a, m) {
-          i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments);
-          }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', analyticsOptions.siteId, { 'alwaysSendReferrer': true });
-        ga('set', 'anonymizeIp', true);
-      }
-    }
-    $rootScope.$on('$locationChangeSuccess', function (event, toState, fromState) {
-      if (analyticsOptions.hasOwnProperty("defaultTitle")) {
-        var documentTitle = analyticsOptions.defaultTitle;
-        var interval = $interval(function () {
-          if (document.title !== '') documentTitle = document.title;
-          if (window.location.pathname.indexOf('openurl') !== -1 || window.location.pathname.indexOf('fulldisplay') !== -1) if (angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).length === 0) return;else documentTitle = angular.element(document.querySelector('prm-full-view-service-container .item-title>a')).text();
-
-          if (typeof ga !== 'undefined') {
-            if (fromState != toState) ga('set', 'referrer', fromState);
-            ga('set', 'location', toState);
-            ga('set', 'title', documentTitle);
-            ga('send', 'pageview');
-          }
-          $interval.cancel(interval);
-        }, 0);
-      }
-    });
-  }
-});
-angular.module('googleAnalytics').value('analyticsOptions', {
-  enabled: true,
-  siteId: 'UA-184141050-1',
-  defaultTitle: 'UCLS Santa Barbara sandbox'
-});
-/**
- * End Google Analytics 
- */
-/**
  * Begin Finding Aid
  * Source: https://github.com/cbaksik/HVD2/blob/master/js/prm-brief-result-container-after.js
  */
@@ -271,6 +225,7 @@ app.component('prmAlmaOtherMembersAfter', {
 /**
  * Begin secondary logo
 **/
+// regular search
 app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
   var vm = this;
 
@@ -298,6 +253,66 @@ app.controller('SearchBarAfterController', ['$scope', '$rootScope', '$location',
 app.component('prmSearchBarAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'SearchBarAfterController',
+  templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
+});
+// journal search
+app.controller('AtozSearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
+  var vm = this;
+
+  this.navigateToHomePage = function () {
+    var params = $location.search();
+    var vid = params.vid;
+    var lang = params.lang || "en_US";
+    var split = $location.absUrl().split('/discovery/');
+
+    if (split.length === 1) {
+      console.log(split[0] + ' : Could not detect the view name!');
+      return false;
+    }
+
+    var baseUrl = split[0];
+    $window.location.href = baseUrl + '/discovery/jsearch?vid=' + vid + '&lang=' + lang;
+    return true;
+  };
+
+  this.getUclsLogo = function () {
+    return 'custom/01UCSB_INST-UCSB/img/ucls-logo.png';
+  };
+}]);
+
+app.component('prmAtozSearchBarAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: 'AtozSearchBarAfterController',
+  templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
+});
+// browse prm-browse-search-bar-after
+app.controller('BrowseSearchBarAfterController', ['$scope', '$rootScope', '$location', '$window', function ($scope, $rootScope, $location, $window) {
+  var vm = this;
+
+  this.navigateToHomePage = function () {
+    var params = $location.search();
+    var vid = params.vid;
+    var lang = params.lang || "en_US";
+    var split = $location.absUrl().split('/discovery/');
+
+    if (split.length === 1) {
+      console.log(split[0] + ' : Could not detect the view name!');
+      return false;
+    }
+
+    var baseUrl = split[0];
+    $window.location.href = baseUrl + '/discovery/browse?vid=' + vid + '&lang=' + lang;
+    return true;
+  };
+
+  this.getUclsLogo = function () {
+    return 'custom/01UCSB_INST-UCSB/img/ucls-logo.png';
+  };
+}]);
+
+app.component('prmBrowseSearchBarAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: 'BrowseSearchBarAfterController',
   templateUrl: 'custom/01UCSB_INST-UCSB/html/ucls-logo.html'
 });
 /**
@@ -368,17 +383,13 @@ angular.module('externalSearch', []).value('searchTargets', []).component('prmFa
   bindings: { parentCtrl: '<' },
   template: '\n      <div ng-if="name === \'External Search\'">\n        <div ng-hide="$ctrl.parentCtrl.facetGroup.facetGroupCollapsed">\n          <div class="section-content animate-max-height-variable" id="external-search">\n            <div ng-repeat="target in targets" aria-live="polite" class="md-chip animate-opacity-and-scale facet-element-marker-local4">\n              <div id="external-search-item" class="md-chip-content layout-row" role="button" tabindex="0">\n                <strong dir="auto" title="{{ target.name }}">\n                  <a ng-href="{{ target.url + target.mapping(queries, filters) }}" target="_blank">\n                    <img ng-src="{{ target.img }}" width="20" height="20"/> {{ target.name }}\n                  </a>\n                  <span class="desc">{{target.desc}}</span>\n                </strong>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>',
   controller: ['$scope', '$location', 'searchTargets', function ($scope, $location, searchTargets) {
-    $scope.name = this.parentCtrl.facetGroup.name;
     $scope.targets = searchTargets;
     var query = $location.search().query;
     var filter = $location.search().pfilter;
     $scope.queries = Array.isArray(query) ? query : query ? [query] : false;
     $scope.filters = Array.isArray(filter) ? filter : filter ? [filter] : false;
-    /*
-    * Customized to replace "University of California" with "UC" in facets
-    * 
-    * Courtesy of UC Santa Cruz
-    */
+    $scope.name = this.parentCtrl.facetGroup.name;
+    //customized to replace "University of California" with "UC" in facets
     if ($scope.name == 'institution') {
       // Once the institutions facets load, find them in the document.
       var institutionFacets = document.querySelector('[data-facet-group="institution"]');
@@ -423,7 +434,7 @@ angular.module('externalSearch', []).value('searchTargets', []).component('prmFa
           i > 10 ? clearInterval(institutionsInterval) : i++;
         }, 100);
       });
-    } // End UC facet customization
+    }
   }]
 }).factory('externalSearchService', function () {
   return {
@@ -434,33 +445,24 @@ angular.module('externalSearch', []).value('searchTargets', []).component('prmFa
       this.prmFacetCtrl = controller;
     },
     addExtSearch: function addExtSearch() {
-      if (this.prmFacetCtrl.$stateParams.search_scope != 'CourseReserves') {
-        var xx = this;
-        if (xx.prmFacetCtrl.$stateParams.search_scope == 'wcat_profile') {
-          xx.prmFacetCtrl.facetService.results.unshift({
-            name: 'External Search',
-            displayedType: 'exact',
-            limitCount: 0,
-            facetGroupCollapsed: false,
-            values: undefined
-          });
-        } else {
-          var checkExist = setInterval(function () {
-            if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
-              if (xx.prmFacetCtrl.facetService.results.name != "External Search") {
-                xx.prmFacetCtrl.facetService.results.unshift({
-                  name: 'External Search',
-                  displayedType: 'exact',
-                  limitCount: 0,
-                  facetGroupCollapsed: false,
-                  values: undefined
-                });
-              }
-              clearInterval(checkExist);
+      var xx = this;
+      var checkExist = setInterval(function () {
+        if (xx.prmFacetCtrl.facetService.results[0] && xx.prmFacetCtrl.facetService.results[0].name != "External Search") {
+          if (xx.prmFacetCtrl.facetService.results.name != 'External Search') {
+            // customized to check for undesired scope
+            if (!(xx.prmFacetCtrl.$stateParams.search_scope === 'CourseReserves')) {
+              xx.prmFacetCtrl.facetService.results.unshift({
+                name: 'External Search',
+                displayedType: 'exact',
+                limitCount: 0,
+                facetGroupCollapsed: false,
+                values: undefined
+              });
             }
-          }, 50);
+          }
+          clearInterval(checkExist);
         }
-      }
+      }, 50);
     }
   };
 });
