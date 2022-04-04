@@ -13,16 +13,21 @@
   background: transparent!important;
 }
 
-@media (min-width: 970px) {
-  .search-wrapper {
+
+
+@media (min-width: 900px) {
+  .search-wrapper, prm-atoz-search-bar > div.layout-row,
+  prm-browse-search-bar > div.layout-row {
     margin-left: 20%;
   }
 
-  .search-wrapper .flex-lg-10 {
+  .search-wrapper .flex-lg-10, prm-atoz-search-bar > div.layout-row > div.flex-xl-20,
+  prm-browse-search-bar > div.layout-row > div.flex-xl-20 {
     display: none;
   }
 
-  .search-wrapper .flex-lg-65 {
+  .search-wrapper .flex-lg-65, prm-atoz-search-bar > div.layout-row > div.flex-lg-55,
+  prm-browse-search-bar > div.layout-row > div.flex-lg-55 {
     max-width: 80%;
   }
 
