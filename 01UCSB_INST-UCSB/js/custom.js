@@ -5,7 +5,7 @@
 /**
  * Begin modules and templates
  */
-var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability', 'googleAnalytics']);
+var app = angular.module('viewCustom', ['angularLoad', 'externalSearch', 'hathiTrustAvailability']);
 
 app.component('prmSearchResultAvailabilityLineAfter', {
   /* HathiTrust template */
