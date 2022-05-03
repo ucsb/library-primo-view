@@ -1,6 +1,13 @@
-prm-alma-viewit-items h4 {
+/**
+ * SILS styles
+ */
+/* Hide superfluous "Full Text Availability" header in ViewIt section */
+prm-alma-viewit-items * > div.bold-text {
   display: none !important;
 }
 prm-alma-viewit-items h4.ng-scope {
   display: inherit;
-  }
+}
+/**
+ * End SILS styles
+ */

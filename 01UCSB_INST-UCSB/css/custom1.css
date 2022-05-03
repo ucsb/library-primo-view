@@ -91,12 +91,19 @@ prm-brief-result-container.list-item:hover {
   font-size: 36px;
   color: #7b8995;
 }
-prm-alma-viewit-items h4 {
+/**
+ * SILS styles
+ */
+/* Hide superfluous "Full Text Availability" header in ViewIt section */
+prm-alma-viewit-items * > div.bold-text {
   display: none !important;
 }
 prm-alma-viewit-items h4.ng-scope {
   display: inherit;
-  }
+}
+/**
+ * End SILS styles
+ */
 /* Manually alphabetize the UC's in the institution facets */
 div[data-facet-group="institution"] .md-chips-wrap {
   display: flex;
