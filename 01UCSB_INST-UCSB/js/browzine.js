@@ -41,7 +41,11 @@ browzine.script.src = "https://s3.amazonaws.com/browzine-adapters/primo/browzine
 document.head.appendChild(browzine.script);
 
 app.controller('prmSearchResultAvailabilityLineAfterController', function($scope) {
-  window.browzine.primo.searchResult($scope);
+  this.$onInit = function(){
+    {
+      window.browzine.primo.searchResult($scope);
+    }
+  };
 });
 /**
  * End BrowZine
