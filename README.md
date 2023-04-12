@@ -1,6 +1,6 @@
 Credit to [thatbudakguy](https://github.com/thatbudakguy/primo-explore-devenv-docker) for the Dockerfile.
 
-Use [ExLibrisGroup/primo-explore-devenv](https://github.com/ExLibrisGroup/primo-explore-devenv) to make changes to the library catalog website.
+Use [ExLibrisGroup/primo-explore-devenv](https://github.com/ExLibrisGroup/primo-explore-devenv) to test changes to the library catalog website.
 
 Requirements:
 - docker
