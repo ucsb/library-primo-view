@@ -1,11 +1,11 @@
-Credit to thatbudakguy for the Dockerfile: https://github.com/thatbudakguy/primo-explore-devenv-docker
+Credit to [thatbudakguy](https://github.com/thatbudakguy/primo-explore-devenv-docker) for the Dockerfile.
 
 Requirements:
 - docker
 - docker compose
 
 To use this repo:
-1. update the `.env` file with your account information
+1. update `.env` file with account-specific info
 2. run `docker compose build`
 3. run `docker compose up`
-4. find your external ip address in the docker logs, then open a web browser and navigate to `<external ip>:8003/discovery/search?vid=<your view id>`
+4. open a web browser and navigate to `localhost:8003/discovery/search?vid=<YOUR VIEW ID>`
