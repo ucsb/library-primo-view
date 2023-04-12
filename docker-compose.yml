@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  primo:
+    build:
+      target: primo-env
+    image: primo-env
+    ports:
+      - "8888:80"
+    volumes:
+      - .:/home/node/primo-explore-devenv/primo-explore/custom/${VIEW}
+      - ./:/home/node/primo-explore-devenv/packages
+      - ./bin:/mnt/bin
