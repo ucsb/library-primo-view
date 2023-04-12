@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  primo:
+    build:
+      target: primo-env
+      args:
+        VIEW: ${VIEW}
+        PROXY: ${PROXY}
+    env_file: .env
+    image: primo-env
+    ports:
+      - "8003:8003"
+      - "3001:3001"
+    volumes:
+      - .:/home/node/primo-explore-devenv/primo-explore/custom/${VIEW}
+      - ./bin:/home/node/primo-explore-devenv/packages

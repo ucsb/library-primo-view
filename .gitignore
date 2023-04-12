@@ -1,3 +1,6 @@
 package-lock.json
 package.json
 showDirectives.txt
+css/custom1.css
+js/custom.js
+bin/*
