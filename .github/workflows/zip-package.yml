@@ -1,0 +1,39 @@
+---
+name: "package files for production"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+jobs:
+  package:
+    name: "zip files using view id as folder name"
+
+  steps:    
+  - name: Checkout repo
+    uses: actions/checkout@v2
+
+  - name: Read .env file
+    id: getenv
+    run: echo "file=$(cat .env)" >> $GITHUB_OUTPUT
+
+  - name: Get view id from file
+    id: view
+    run: |
+      content=${{ steps.getenv.outputs.file }}
+      tmp=${content#VIEW=\"}
+      echo "id=${tmp%\"*}" >> $GITHUB_OUTPUT
+    
+  - name: build image
+    run: docker compose build
+
+  - name: zip file
+    run: docker compose run primo gulp create-package --view ${{ steps.view.outputs.id }}
+
+  - name: "upload package"
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ steps.view.outputs.id }}
+        path: bin/${{ steps.view.outputs.id }}.zip
+..
