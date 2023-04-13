@@ -8,6 +8,7 @@ on:
 jobs:
   package:
     name: "zip files using view id as folder name"
+    runs-on: [linux]
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
