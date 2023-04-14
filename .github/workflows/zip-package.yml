@@ -16,11 +16,12 @@ jobs:
       id: getenv
       run: echo "file=$(cat .env)" >> $GITHUB_OUTPUT
     - name: Get view id from file
+      env:
+        CONTENT: ${{ steps.getenv.outputs.file }}
       id: view
       run: |
-        content = ${{ steps.getenv.outputs.file }}
-        vid = $(echo $content | sed 's/VIEW="//;s/"//')
-        echo "vid=$vid" >> $GITHUB_OUTPUT
+        view=$(echo $CONTENT | sed 's/VIEW="//;s/"//')
+        echo "vid=$view" >> $GITHUB_OUTPUT
     - name: build image
       run: docker compose build
     - name: zip file
