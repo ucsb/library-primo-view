@@ -18,9 +18,9 @@ jobs:
     - name: Get view id from file
       id: view
       run: |
-        content=${{ steps.getenv.outputs.file }}
-        tmp=${content#VIEW=\"}
-        echo "id=${tmp%\"*}" >> $GITHUB_OUTPUT
+        content = ${{ steps.getenv.outputs.file }}
+        vid = $(echo $content | sed 's/VIEW="//;s/"//')
+        echo "vid=$vid" >> $GITHUB_OUTPUT
     - name: build image
       run: docker compose build
     - name: zip file
