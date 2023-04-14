@@ -24,13 +24,15 @@ jobs:
         echo "vid=$view" >> $GITHUB_OUTPUT
     - name: build image
       run: docker compose build
-    - name: zip file
+    - name: create primo package
       env:
         VIEW: ${{ steps.view.outputs.vid }}
       run: docker compose run primo gulp create-package --view $VIEW
+    - name: extract package
+      run: 7z x -obin bin/${{ steps.view.outputs.vid }}.zip
     - name: upload package
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.view.outputs.vid }}
-        path: bin/${{ steps.view.outputs.vid }}.zip
+        path: bin/${{ steps.view.outputs.vid }}/*
 ...
