@@ -5,6 +5,9 @@ on:
   push:
     branches:
     - main
+    paths-ignore:
+    - ".github/workflows/*"
+    - "**/*.md"
 jobs:
   package:
     name: "zip files using view id as folder name"
