@@ -26,11 +26,11 @@ jobs:
       run: docker compose build
     - name: zip file
       env:
-        VIEW: ${{ steps.view.outputs.id }}
+        VIEW: ${{ steps.view.outputs.vid }}
       run: docker compose run primo gulp create-package --view $VIEW
     - name: upload package
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ steps.view.outputs.id }}
-        path: bin/${{ steps.view.outputs.id }}.zip
+        name: ${{ steps.view.outputs.vid }}
+        path: bin/${{ steps.view.outputs.vid }}.zip
 ...
