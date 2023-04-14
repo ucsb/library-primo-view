@@ -10,9 +10,11 @@ jobs:
     name: "zip files using view id as folder name"
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repo
+    - name: checkout repo
       uses: actions/checkout@v2
-    - name: Read .env file
+    - name: make temp dir for artifacts
+      run: mkdir bin
+    - name: read .env file
       id: getenv
       run: echo "file=$(cat .env)" >> $GITHUB_OUTPUT
     - name: Get view id from file
