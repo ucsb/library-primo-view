@@ -36,5 +36,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ steps.view.outputs.vid }}
-        path: bin/${{ steps.view.outputs.vid }}/*
+        path: |
+          bin
+          !bin/*.zip
 ...
