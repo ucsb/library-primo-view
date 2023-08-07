@@ -1,0 +1,69 @@
+<md-button id='findItButton' class='md-raised' onclick="document.getElementById('findItBox').scrollIntoView({behavior: 'smooth'});">Didn't Find It ?</md-button>
+<a name="findItBox"></a>
+<md-card id="findItBox">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Didn't find it?</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <div>
+      <span class="md-subheadline">Chat with us for help</span>
+      <p>We can help you find resources, start your research, cite your sources, and more!</p>
+      <div id="libchat_955221b59c9df85fdcfe2e2ef0261789"></div>
+    </div>
+    <div role="list" class="md-primoExplore-theme">
+      <div>
+        <span class="md-subheadline">Try your search again</span>
+        <md-list-item role="listitem" class="_md-no-proxy _md">
+          <div>
+            <a href="/discovery/search?query={{$ctrl.queryString}}&tab={{$ctrl.tab}}&search_scope={{$ctrl.search_scope}}&vid={{$ctrl.vid}}&offset=0&pcAvailability=true" target="_self" class="img"><img src="custom/01UCSB_INST-UCSB/img/icon-article.png" width="35" height="35" alt="Article icon" /></a>
+          </div>
+          <div>
+            <p><a href="/discovery/search?query={{$ctrl.queryString}}&tab={{$ctrl.tab}}&search_scope={{$ctrl.search_scope}}&vid={{$ctrl.vid}}&offset=0&pcAvailability=true" target="_self">Articles available by request</a></p>
+            <p>Add articles available by Interlibrary Loan to your results</p>
+          </div>
+        </md-list-item>
+        <md-list-item>
+          <div>
+            <a href="https://scholar-google-com.proxy.library.ucsb.edu/scholar?q={{$ctrl.queryString}}" target="_self" class="img">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/200px-Google_%22G%22_Logo.svg.png" width="35" height="35" alt="Google Scholar logo"/>
+            </a>
+          </div>
+          <div>
+            <p><a href="https://scholar-google-com.proxy.library.ucsb.edu/scholar?q={{$ctrl.queryString}}" target="_self">Google Scholar Search</a></p>
+            <p>Find items on Google Scholar</p>
+          </div>
+        </md-list-item>
+        <md-list-item role="listitem" class="_md-no-proxy _md">
+          <div>
+            <a href="/discovery/search?query={{$ctrl.queryString}}&tab=Worldcat&search_scope=Worldcat&vid={{$ctrl.vid}}&offset=0" target="_self" class="img">
+              <img src="custom/01UCSB_INST-UCSB/img/worldcat.png" width="35" height="35" alt="Worldcat Logo" />
+            </a>
+          </div>
+          <div>
+            <p><a href="https://ucsb.on.worldcat.org/v2/search?queryString={{$ctrl.queryString}}" target="_self">Worldcat Search</a></p>
+            <p>Find items available by request from libraries worldwide</p>
+          </div>
+        </md-list-item>
+      </div>
+      <span class="md-subheadline" style="margin-top:15px;">Tell us what you need</span>
+      <md-list-item role="listitem" class="_md-no-proxy _md align-center">
+        <div>
+          <a href="/discovery/citationlinker?vid={{$ctrl.vid.replace(':', '%3A')}}" class="img"><img src="custom/01UCSB_INST-UCSB/img/icon-purchase.png" width="35" height="35" /></a>
+        </div>
+        <div>
+          <p><a href="/discovery/citationlinker?vid={{$ctrl.vid.replace(':', '%3A')}}">Find by citation</a></p>
+        </div>
+      </md-list-item>
+      <md-list-item role="listitem" class="_md-no-proxy _md align-center">
+        <div>
+          <a href="/discovery/blankIll?vid={{$ctrl.vid.replace(':', '%3A')}}" class="img"><img src="custom/01UCSB_INST-UCSB/img/icon-ill.png" width="35" height="35" /></a>
+        </div>
+        <div>
+          <p><a href="/discovery/blankIll?vid={{$ctrl.vid.replace(':', '%3A')}}">Manual Interlibrary Loan Form</a></p>
+        </div>
+      </md-list-item>
+    </div>
+  </md-card-content>
+</md-card>
