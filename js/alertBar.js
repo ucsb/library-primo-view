@@ -2,10 +2,9 @@
  * Begin Alert Bar
  * Code courtesy of UCI
  */
-/*
 var alertBanner = window.setInterval(function () {
   var date = new Date();
-  if (date.getFullYear() == 2021 && date.getMonth() < 8) {
+  if (date.getFullYear() == 2023 && date.getMonth() < 11) {
     var prmAlertBar = document.getElementsByClassName('topbar-wrapper');
     var alertBarDiv = document.createElement('div');
     alertBarDiv.setAttribute('id', 'customAlertBar');
@@ -14,16 +13,16 @@ var alertBanner = window.setInterval(function () {
     var alertBarInnerDiv = document.createElement('div');
 
     if (date.getDate() > 19) {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #E00000;padding: 3px 0;font-size: 16px; color: #FFFFFF;');
-      alertBarInnerDiv.innerHTML = 'Changes are imminent! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a style="color: #ffffff; text-decoration: underline;" href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';      
+      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FFCE34;padding: 3px 0;font-size: 15px; color: #000000; font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;');
+      alertBarInnerDiv.innerHTML = 'September 18-22, 2023: N-NC subclass art collections will be unavailable while they are relocated to the second floor.<br> <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">Click here</a> to learn more';      
     }
     else if (date.getDate() > 12) {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FF8000;padding: 3px 0;font-size: 16px; color: #000000;');
-      alertBarInnerDiv.innerHTML = 'Changes are coming soon! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a style="color: #000000; text-decoration: underline;" href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';
+      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FFCE34;padding: 3px 0;font-size: 15px; color: #000000; font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;');
+      alertBarInnerDiv.innerHTML = 'September 18-22, 2023: N-NC subclass art collections will be unavailable while they are relocated to the second floor.<br> <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">Click here</a> to learn more';
     }
     else {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #fcd02f;padding: 3px 0;font-size: 16px;');
-      alertBarInnerDiv.innerHTML = 'Changes are coming! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';
+        alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FFCE34;padding: 3px 0;font-size: 15px; color: #000000; font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;');
+        alertBarInnerDiv.innerHTML = 'September 18-22, 2023: N-NC subclass art collections will be unavailable while they are relocated to the second floor.<br> <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">Click here</a> to learn more.';
     }
     
     alertBarDiv.appendChild(alertBarInnerDiv);
@@ -31,7 +30,6 @@ var alertBanner = window.setInterval(function () {
     clearInterval(alertBanner);
   }
 }, 5000);
-*/
 /**
  * End Alert Bar
  */
