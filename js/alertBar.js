@@ -4,7 +4,7 @@
  */
 var alertBanner = window.setInterval(function () {
   var date = new Date();
-  if (date.getFullYear() == 2023 && date.getMonth() > 8 ) {
+  if (date.getFullYear() == 2023 && date.getMonth() > 8  && date.getMonth() < 11) {
     var prmAlertBar = document.getElementsByClassName('topbar-wrapper');
     var alertBarDiv = document.createElement('div');
     alertBarDiv.setAttribute('id', 'customAlertBar');
