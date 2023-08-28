@@ -2,10 +2,9 @@
  * Begin Alert Bar
  * Code courtesy of UCI
  */
-/*
 var alertBanner = window.setInterval(function () {
   var date = new Date();
-  if (date.getFullYear() == 2021 && date.getMonth() < 8) {
+  if (date.getFullYear() == 2023 && date.getMonth() > 8  && date.getMonth() < 11) {
     var prmAlertBar = document.getElementsByClassName('topbar-wrapper');
     var alertBarDiv = document.createElement('div');
     alertBarDiv.setAttribute('id', 'customAlertBar');
@@ -13,25 +12,19 @@ var alertBanner = window.setInterval(function () {
     alertBarDiv.setAttribute('layout-align', 'center center');
     var alertBarInnerDiv = document.createElement('div');
 
-    if (date.getDate() > 19) {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #E00000;padding: 3px 0;font-size: 16px; color: #FFFFFF;');
-      alertBarInnerDiv.innerHTML = 'Changes are imminent! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a style="color: #ffffff; text-decoration: underline;" href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';      
+    if (date.getMonth() == 9 && date.getDate() > 10 && date.getDate() < 23) {
+      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FFCE34;padding: 3px 0;font-size: 15px; color: #000000; font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;');
+      alertBarInnerDiv.innerHTML = 'September 18-22, 2023: Art & Architecture General Collection print materials with call numbers N-NC will be unavailable while they are relocated to the 2nd floor, Mountain Side.<br> <a href="https://www.library.ucsb.edu/arts-library-project">Click here</a> to learn more';
     }
-    else if (date.getDate() > 12) {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FF8000;padding: 3px 0;font-size: 16px; color: #000000;');
-      alertBarInnerDiv.innerHTML = 'Changes are coming soon! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a style="color: #000000; text-decoration: underline;" href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';
+    else if ((date.getMonth() == 9 && date.getDate() > 22) || (date.getMonth() == 10 && date.getDate() < 14)) {
+      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #FFCE34;padding: 3px 0;font-size: 15px; color: #000000; font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;');
+      alertBarInnerDiv.innerHTML = 'Art & Architecture General Collection print materials with call numbers N-NC are temporarily located on the 2nd floor, Mountain Side.<br> <a href="https://www.library.ucsb.edu/arts-library-project">Click here</a> to learn more.';
     }
-    else {
-      alertBarInnerDiv.setAttribute('style', 'text-align: center;background-color: #fcd02f;padding: 3px 0;font-size: 16px;');
-      alertBarInnerDiv.innerHTML = 'Changes are coming! On July 27th this search tool will be replaced with a new systemwide tool - UC Library Search.<br>Learn more at the <a href="https://libraries.universityofcalifornia.edu/uclibrarysearch">UC Library Search website.</a>';
-    }
-    
     alertBarDiv.appendChild(alertBarInnerDiv);
     prmAlertBar[0].prepend(alertBarDiv);
     clearInterval(alertBanner);
   }
 }, 5000);
-*/
 /**
  * End Alert Bar
  */
