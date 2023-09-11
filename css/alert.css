@@ -11,6 +11,18 @@ prm-topbar .top-nav-bar {
   height: 64px;
 }
 
+.alertBarHoverImg { position:relative; }
+.alertBarHoverImg span { position:absolute; display:none; z-index:99; }
+/*.alertBarHoverImg span { display:none; }*/
+.alertBarHoverImg:hover span {
+  display:block;
+  position: fixed;
+/*  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+*/
+}
+
 /* Uncomment when no longer need alert bar */
 /*
 prm-top-bar-before {
