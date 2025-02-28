@@ -1,3 +1,5 @@
+This project has [migrated to Gitlab](https://gitlab.com/ucsb-library/alma-primo).
+
 # Purpose
 Test changes to UCSB Library's catalog website using [ExLibrisGroup/primo-explore-devenv](https://github.com/ExLibrisGroup/primo-explore-devenv).
 
